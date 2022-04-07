@@ -6,8 +6,9 @@ function App() {
   return (
     <div className={styles.textColor}>
       <Navbar />
+      Home
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
