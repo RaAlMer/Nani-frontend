@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, NotFound } from "./pages";
+import { Home, NotFound, Profile, Login, Search, Anime } from "./pages";
 import { AuthContextProvider } from "./context";
 
 ReactDOM.render(
@@ -14,6 +14,10 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/login-signup" element={<Login />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/anime/:id" element={<Anime />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
