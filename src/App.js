@@ -4,7 +4,7 @@ import { Footer, Navbar } from "./components";
 
 function App() {
   return (
-    <div className={styles.textColor}>
+    <div>
       <Navbar />
       Home
       <Outlet />
