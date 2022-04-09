@@ -6,8 +6,9 @@ function App() {
   return (
     <div>
       <Navbar />
+      Home
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
