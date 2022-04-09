@@ -25,7 +25,7 @@ ReactDOM.render(
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/login-signup" element={<SignupLogin />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/anime/:id" element={<Anime />} />
+            <Route path="/anime/:animeId" element={<Anime />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
