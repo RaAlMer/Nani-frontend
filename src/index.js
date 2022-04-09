@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home, NotFound, Profile, SignupLogin, Search, Anime } from "./pages";
 import { AuthContextProvider } from "./context";
+import { PrivateRoute } from "./components";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +14,14 @@ ReactDOM.render(
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route index element={<Home />} />
+            <Route
+              index
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/login-signup" element={<SignupLogin />} />
             <Route path="/search" element={<Search />} />

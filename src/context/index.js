@@ -12,6 +12,10 @@ export function AuthContextProvider({ children }) {
     localStorage.setItem("token", `Bearer ${token}`);
   };
 
+  const deleteToken = () => {
+    localStorage.removeItem("token");
+  };
+
   const signup = async (firstName, lastName, email, password) => {
     const response = await client.post("/auth/signup", {
       firstName,
@@ -47,6 +51,12 @@ export function AuthContextProvider({ children }) {
     }
   };
 
+  const logout = () => {
+    deleteToken();
+    setUser(null);
+    navigate("/landing");
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -58,6 +68,7 @@ export function AuthContextProvider({ children }) {
     user,
     signup,
     login,
+    logout,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

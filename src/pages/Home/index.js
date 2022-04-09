@@ -3,6 +3,10 @@ import { AuthContext } from "../../context";
 import styles from "./Home.module.css";
 
 export function Home() {
-  const value = useContext(AuthContext)
-  return <div>Home: {value.user.email}</div>;
+  const { user } = useContext(AuthContext);
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  );
 }
