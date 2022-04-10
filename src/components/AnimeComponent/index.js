@@ -15,9 +15,7 @@ export function AnimeComponent({ id, type }) {
   }, []);
   const handleRender = () => {
     if (anime) {
-      console.log("Anime is true");
       if (type) {
-        console.log("type is", type);
         return (
           <div class="container">
             <h1 id="title">{anime.attributes.canonicalTitle}</h1>
