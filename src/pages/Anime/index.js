@@ -9,7 +9,7 @@ export function Anime() {
   return (
     <div>
       <h1>Anime</h1>
-      <AnimeComponent id={animeId}/>
+      <AnimeComponent id={animeId} type="medium"/>
     </div>
   );
 }
