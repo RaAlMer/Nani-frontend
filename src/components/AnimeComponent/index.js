@@ -1,21 +1,27 @@
 import styles from "./Anime.module.css";
 import { client } from "../../client";
 import { useEffect, useState } from "react";
+import { Spinner } from "components";
 
 export function AnimeComponent({ id, type }) {
   const [anime, setAnime] = useState();
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const getAnime = async () => {
       const item = await client.get(`/anime/${id}`);
       const result = item.data;
-      //return result
       setAnime(result);
     };
     getAnime();
+    setLoading(false);
   }, []);
+
   const handleRender = () => {
-    if (anime) {
-      if (type) {
+    if (loading) {
+      <Spinner />;
+    } else {
+    /* if (type) { */
         return (
           <div class="container">
             <h1 id="title">{anime.attributes.canonicalTitle}</h1>
@@ -49,7 +55,7 @@ export function AnimeComponent({ id, type }) {
           </div>
         );
       }
-    }
+    //}
   };
   return <>{handleRender()}</>;
 }

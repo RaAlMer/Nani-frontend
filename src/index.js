@@ -14,15 +14,15 @@ ReactDOM.render(
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
             <Route
-              index
+              path="/profile/:id"
               element={
                 <PrivateRoute>
-                  <Home />
+                  <Profile />
                 </PrivateRoute>
               }
             />
-            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/login-signup" element={<SignupLogin />} />
             <Route path="/search" element={<Search />} />
             <Route path="/anime/:animeId" element={<Anime />} />
