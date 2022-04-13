@@ -10,6 +10,8 @@ export function Navbar() {
             {user && <Link to="/">Home</Link>}
             {!user && <Link to="/login-signup">Login/Signup</Link>}
             {user && <button onClick={logout}>Logout</button>}
+            {user && <Link to="/profile">Profile</Link>}
+            {user && <Link to="/search">Search</Link>}
         </nav>
     )
 }

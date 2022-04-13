@@ -16,7 +16,7 @@ ReactDOM.render(
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
             <Route
-              path="/profile/:id"
+              path="/profile"
               element={
                 <PrivateRoute>
                   <Profile />

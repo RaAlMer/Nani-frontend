@@ -17,7 +17,6 @@ export function AnimeComponent({ id, type }) {
     const item = await client.get(`/anime/${id}`);
     const result = item.data;
     setAnime(result);
-    console.log(result);
   };
 
   useEffect(() => {
@@ -31,10 +30,12 @@ export function AnimeComponent({ id, type }) {
         <h1 id="title">{anime.attributes.canonicalTitle}</h1>
         <br />
         <div className="anime">
+          <a href={`/anime/${anime.id}`}>
           <img
             src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
             alt=""
           />
+          </a>
         </div>
       </div>
     </>
@@ -70,7 +71,6 @@ export function AnimeComponent({ id, type }) {
     } else {
       return [animeMainInfo, animeExtraInfo];
     }
-    //}
   };
   return <>{handleRender()}</>;
 }
