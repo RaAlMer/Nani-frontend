@@ -17,16 +17,16 @@ export function AnimeComponent({ id, type }) {
     const item = await client.get(`/anime/${id}`);
     const result = item.data;
     setAnime(result);
+    setLoading(false);
   };
 
   useEffect(() => {
     getAnime();
-    setLoading(false);
   }, []);
 
   const animeMainInfo = (
     <>
-      <div class="container">
+      <div className="container">
         <h1 id="title">{anime.attributes.canonicalTitle}</h1>
         <br />
         <div className="anime">
