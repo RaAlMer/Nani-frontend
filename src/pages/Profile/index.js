@@ -5,7 +5,6 @@ import styles from "./Profile.module.css";
 
 export function Profile() {
   const {user} = useContext(AuthContext);
-  console.log(user)
 
   const watchedList = user.watched.map((item) => {
     return <AnimeComponent key={item.id} id={item.id} type="tiny" />;

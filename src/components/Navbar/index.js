@@ -36,7 +36,7 @@ export function Navbar() {
           )}
           {user && (
             <li className={styles.items}>
-              <Link to="/profile/:id">Profile</Link>
+              <Link to="/profile">Profile</Link>
             </li>
           )}
           {user && (

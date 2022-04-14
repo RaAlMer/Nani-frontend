@@ -2,6 +2,7 @@ import styles from "./Anime.module.css";
 import { client } from "../../client";
 import { useEffect, useState } from "react";
 import { Spinner } from "components";
+import { Link } from "react-router-dom";
 
 export function AnimeComponent({ id, type }) {
   const [anime, setAnime] = useState({
@@ -30,12 +31,12 @@ export function AnimeComponent({ id, type }) {
         <h1 id="title">{anime.attributes.canonicalTitle}</h1>
         <br />
         <div className="anime">
-          <a href={`/anime/${anime.id}`}>
+          <Link to={`/anime/${anime.id}`}>
           <img
             src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
             alt=""
           />
-          </a>
+          </Link>
         </div>
       </div>
     </>

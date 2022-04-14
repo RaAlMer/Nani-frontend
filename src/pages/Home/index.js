@@ -13,11 +13,11 @@ export function Home() {
     const item = await client.get(`/anime/home`);
     const result = item.data;
     setAnime(result);
+    setLoading(false);
   };
 
   useEffect(() => {
     getAnime();
-    setLoading(false);
   }, []);
 
   return (
