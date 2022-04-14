@@ -4,33 +4,24 @@ import { AuthContext } from "context";
 
 export function Signup() {
   const { signup } = useContext(AuthContext);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(firstName, lastName, email, password);
+    signup(username, email, password);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Signup</h2>
-      <label htmlFor="firstName">First name:</label>
+      <label htmlFor="username">Username:</label>
       <input
-        id="firstName"
-        value={firstName}
+        id="username"
+        value={username}
         onChange={(e) => {
-          setFirstName(e.target.value);
-        }}
-      />
-      <label htmlFor="lastName">Last name:</label>
-      <input
-        id="lastName"
-        value={lastName}
-        onChange={(e) => {
-          setLastName(e.target.value);
+          setUsername(e.target.value);
         }}
       />
       <label htmlFor="email">Email:</label>

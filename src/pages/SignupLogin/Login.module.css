@@ -1,0 +1,48 @@
+.log {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 70px 70px 50px 70px;
+  background: rgba(255, 255, 255, 0.9);
+}
+.log .sign_up_component,
+.log .log_in_component {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  transition: all 0.4s linear;
+}
+.log .log_in,
+.log .sign_up {
+  display: none;
+}
+.log .tab {
+  font-size: 22px;
+  margin-right: 15px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+.log .log_in:checked + .tab,
+.log .sign_up:checked + .tab {
+  color: #1161ee;
+  border-color: #1161ee;
+}
+.forms {
+  min-height: 345px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.log .log_in:checked + .tab + .sign_up + .tab + .forms .log_in_component {
+  transform: rotate(0);
+}
+.log .sign_up:checked + .tab + .forms .sign_up_component {
+  transform: rotate(0);
+}

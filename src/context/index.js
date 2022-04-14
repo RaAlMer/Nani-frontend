@@ -16,10 +16,9 @@ export function AuthContextProvider({ children }) {
     localStorage.removeItem("token");
   };
 
-  const signup = async (firstName, lastName, email, password) => {
+  const signup = async (username, email, password) => {
     const response = await client.post("/auth/signup", {
-      firstName,
-      lastName,
+      username,
       email,
       password,
     });
