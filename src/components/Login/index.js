@@ -14,26 +14,35 @@ export function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <label htmlFor="email">Email:</label>
-      <input
-        id="emailLogin"
-        type="email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-      <label htmlFor="password">Password:</label>
-      <input
-        id="passwordLogin"
-        type="password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
-      <button>Login</button>
+      <div className={styles.group}>
+        <label htmlFor="email">Email:</label>
+        <input
+          id="emailLogin"
+          type="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+      </div>
+      <div className={styles.group}>
+        <label htmlFor="password">Password:</label>
+        <input
+          id="passwordLogin"
+          type="password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+      </div>
+      <div className={styles.group}>
+        <button className={styles.button}>Log In</button>
+      </div>
+      <div className={styles.hr}></div>
+      <div className={styles.foot_lnk}>
+        <a href="#">Forgot Password?</a>
+      </div>
     </form>
   );
 }

@@ -1,0 +1,45 @@
+$color: rgb(0, 0, 0);
+$display: block;
+$width: 100%;
+.group {
+  margin-bottom: 15px;
+  label {
+    width: $width;
+    color: $color;
+    display: $display;
+    color: rgb(35, 33, 33);
+    font-size: 12px;
+  }
+  input {
+    width: $width;
+    color: $color;
+    display: $display;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    background: rgba(125, 13, 186, 0.1);
+  }
+  .button {
+    width: $width;
+    color: $color;
+    display: $display;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #9718c9;
+    cursor: pointer;
+    &:hover {
+      background-color: #9718c9db;
+    }
+  }
+}
+.hr {
+  height: 2px;
+  margin: 40px 0 30px 0;
+  background: rgba($color, 0.2);
+}
+.foot_lnk {
+  text-align: center;
+}
