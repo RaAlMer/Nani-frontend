@@ -32,11 +32,10 @@ export function Search() {
           <SearchBar
             search={search}
             setSearch={setSearch}
-            results={results}
             setResults={setResults}
           />
-          {results.length > 1 ? (
-            <ListAnime anime={results} />
+          {(search !== "" && results.length > 0) ? (
+              <ListAnime anime={results} />
           ) : (
             <>
               {pageNumber > 1 ? (

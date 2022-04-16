@@ -4,10 +4,12 @@ import { Footer, Navbar } from "./components";
 
 function App() {
   return (
-    <div>
+    <div className={styles.app}>
       <Navbar />
-      <Outlet />
-      {/* <Footer /> */}
+      <div className={styles.content}>
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   );
 }
