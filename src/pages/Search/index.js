@@ -23,8 +23,8 @@ export function Search() {
   }, [pageNumber]);
 
   return (
-    <div>
-      <h1>All Animes</h1>
+    <div className={styles.search}>
+      <h1>List of Animes</h1>
       {loading ? (
         <Spinner />
       ) : (
@@ -34,23 +34,25 @@ export function Search() {
             setSearch={setSearch}
             setResults={setResults}
           />
-          {(search !== "" && results.length > 0) ? (
-              <ListAnime anime={results} />
+          {search !== "" && results.length > 0 ? (
+            <ListAnime anime={results} />
           ) : (
             <>
               {pageNumber > 1 ? (
-                <>
+                <div>
                   <button onClick={() => setPageNumber(pageNumber + 1)}>
-                    next page
+                    Next page
                   </button>
                   <button onClick={() => setPageNumber(pageNumber - 1)}>
-                    previous page
+                    Previous page
                   </button>
-                </>
+                </div>
               ) : (
-                <button onClick={() => setPageNumber(pageNumber + 1)}>
-                  next page
-                </button>
+                <div>
+                  <button onClick={() => setPageNumber(pageNumber + 1)}>
+                    Next page
+                  </button>
+                </div>
               )}
               <ListAnime anime={anime} />
             </>

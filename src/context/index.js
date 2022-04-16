@@ -24,6 +24,28 @@ export function AuthContextProvider({ children }) {
     });
   };
 
+  const loginGoogle = async (firstName, lastName, email, image, googleId) => {
+    try {
+      const response = await client.post("/auth/google/info", {
+        firstName,
+        lastName,
+        email,
+        image,
+        googleId,
+      });
+      // setting the user
+      setUser(response.data.data);
+    } catch(error) {
+      console.log(error);
+    }
+  };
+
+  const tokenGoogle = (token) => {
+    // we save the token to local storage
+    saveToken(token);
+    navigate("/");
+  };
+
   const login = async (email, password) => {
     try {
       const response = await client.post("/auth/login", {
@@ -66,6 +88,8 @@ export function AuthContextProvider({ children }) {
   const value = {
     user,
     signup,
+    loginGoogle,
+    tokenGoogle,
     login,
     logout,
   };
