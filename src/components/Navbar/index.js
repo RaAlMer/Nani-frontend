@@ -41,11 +41,6 @@ export function Navbar() {
           )}
           {user && (
             <li className={styles.items}>
-              <Link to="/friends">Followers</Link>
-            </li>
-          )}
-          {user && (
-            <li className={styles.items}>
               <Link to="/search">Anime</Link>
             </li>
           )}

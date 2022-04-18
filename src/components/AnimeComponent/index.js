@@ -28,14 +28,14 @@ export function AnimeComponent({ id, type }) {
   const animeMainInfo = (
     <>
       <div className="container">
-        <h1 id="title">{anime.attributes.canonicalTitle}</h1>
         <br />
-        <div className="anime">
-          <Link to={`/anime/${anime.id}`}>
+        <div className={styles.anime}>
+          <Link to={`/anime/${anime.id}`} className={styles.anime_Link}>
           <img
             src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
             alt=""
           />
+          <h1 id="title">{anime.attributes.canonicalTitle}</h1>
           </Link>
         </div>
       </div>
