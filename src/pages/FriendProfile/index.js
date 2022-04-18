@@ -8,7 +8,7 @@ export function FriendProfile() {
   const [friend, setFriend] = useState();
 
   const getFriend = async () => {
-    const item = await client.get(`/auth/friendProfile/${friendId}`);
+    const item = await client.get(`/friend/friendProfile/${friendId}`);
     const result = item.data;
     setFriend(result);
   };

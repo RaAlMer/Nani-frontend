@@ -40,11 +40,11 @@ export function Search() {
             <>
               {pageNumber > 1 ? (
                 <div>
-                  <button onClick={() => setPageNumber(pageNumber + 1)}>
-                    Next page
-                  </button>
                   <button onClick={() => setPageNumber(pageNumber - 1)}>
                     Previous page
+                  </button>
+                  <button onClick={() => setPageNumber(pageNumber + 1)}>
+                    Next page
                   </button>
                 </div>
               ) : (
