@@ -1,44 +1,23 @@
+import { client } from "client";
 import { AnimeComponent } from "components";
+import { Profiles } from "components/Profiles";
 import { AuthContext } from "context";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./Profile.module.css";
 
 export function Profile() {
-  const {user} = useContext(AuthContext);
+  const [user, setUser] = useState();
 
-  const watchedList = user.watched.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
-  });
-  const watchingList = user.watching.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
-  });
-  const planToWatchList = user.planToWatch.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
-  });
-  return (
-    <div>
-      <h1>Profile</h1>
-      <h2> {user.username}</h2>
-      <ul className="lists">
-        <li>
-          <p>Watched</p>
-        </li>
-        <ul className="list">
-          {watchedList}
-        </ul>
-        <li>
-          <p>Watching</p>
-        </li>
-        <ul className="list">
-          {watchingList}
-        </ul>
-        <li>
-          <p>Plan To Watch</p>
-        </li>
-        <ul className="list">
-          {planToWatchList}
-        </ul>
-      </ul>
-    </div>
-  )
+  const getUser = async () => {
+    const item = await client.get("/auth/profile");
+    const result = item.data;
+    setUser(result);
+    console.log(result);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  return <>{user && <Profiles owner={user} />}</>
 }
