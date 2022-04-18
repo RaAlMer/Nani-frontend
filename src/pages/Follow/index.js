@@ -1,14 +1,15 @@
 import { client } from "client";
 import { AuthContext } from "context";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-export function Friends() {
+export function Follow() {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
+  const { id } = useParams();
 
   const getFriends = async () => {
-      const item = await client.get("/friend");
+      const item = await client.get(`/friend/${id}`);
       const result = item.data;
       setFollowers(result.followers);
       setFollowing(result.following);

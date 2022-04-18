@@ -4,4 +4,4 @@ export { Profile } from './Profile';
 export { SignupLogin } from './SignupLogin';
 export { Search } from './Search';
 export { Anime } from './Anime';
-export { Friends } from './Friends';
+export { Follow } from './Follow';
