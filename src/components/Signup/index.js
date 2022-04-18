@@ -9,7 +9,7 @@ import {
   FaGoogle,
 } from "react-icons/fa";
 import GoogleLogin from "react-google-login";
-import { client } from "../../client";
+/* import { client } from "../../client"; */
 
 export function Signup() {
   const { signup, loginGoogle, tokenGoogle, user } = useContext(AuthContext);
@@ -42,6 +42,14 @@ export function Signup() {
         setShowLoading(false);
       });
   }; */
+
+  /* const handleFacebook = async () => {
+    const response = await client.get("/auth/facebook/callback", {
+      facebookId: user.facebookId,
+    });
+    const response = await client.post("/auth/facebook/callback");
+    console.log(response);
+  } */
 
   const handleGoogleSuccess = async (data) => {
     const { givenName, familyName, email, imageUrl, googleId } =
@@ -97,6 +105,7 @@ export function Signup() {
           <span className={styles.tooltip}>Facebook</span>
           <span>
             <FaFacebookF />
+            {/* <button onClick={handleFacebook}><FaFacebookF /></button> */}
           </span>
         </li>
         <li className={`${styles.icon} ${styles.twitter}`}>

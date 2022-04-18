@@ -33,9 +33,14 @@ export function AuthContextProvider({ children }) {
         image,
         googleId,
       });
-      // setting the user
-      setUser(response.data.data);
-    } catch(error) {
+      // setting the user if it already existed in the database
+      if (response.data.user) {
+        setUser(response.data.user);
+      } else { 
+        // setting the user if it did NOT existed in the database
+        setUser(response.data.data);
+      }
+    } catch (error) {
       console.log(error);
     }
   };
@@ -57,7 +62,7 @@ export function AuthContextProvider({ children }) {
       // setting the user
       setUser(response.data.user);
       navigate("/");
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -67,7 +72,7 @@ export function AuthContextProvider({ children }) {
       const response = await client.get("/auth/verify");
       setUser(response.data.user);
       navigate("/");
-    } catch(error) {
+    } catch (error) {
       navigate("/login-signup");
     }
   };
