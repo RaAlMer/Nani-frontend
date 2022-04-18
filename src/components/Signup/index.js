@@ -107,17 +107,21 @@ export function Signup() {
         </li>
         <li className={`${styles.icon} ${styles.google}`}>
           <span className={styles.tooltip}>Google</span>
-          <span>
-            {/* <FaGoogle /> */}
-            <GoogleLogin
-              clientId={`697160381985-4f592dib4sitpdaf88967ck4mg8og74r.apps.googleusercontent.com`}
-              buttonText="Login"
-              onSuccess={handleGoogleSuccess}
-              onFailure={handleGoogleFailure}
-              cookiePolicy={"single_host_origin"}
-              className={`${styles.icon} ${styles.google}`}
-            />
-          </span>
+          <GoogleLogin
+            clientId={`697160381985-4f592dib4sitpdaf88967ck4mg8og74r.apps.googleusercontent.com`}
+            buttonText={<FaGoogle />}
+            onSuccess={handleGoogleSuccess}
+            onFailure={handleGoogleFailure}
+            cookiePolicy={"single_host_origin"}
+            render={(renderProps) => (
+              <span
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <FaGoogle />
+              </span>
+            )}
+          />
         </li>
         <li className={`${styles.icon} ${styles.instagram}`}>
           <span className={styles.tooltip}>Instagram</span>
