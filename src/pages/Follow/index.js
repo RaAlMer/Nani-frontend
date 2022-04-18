@@ -21,7 +21,7 @@ export function Follow() {
   
   return (
     <div>
-      <h1>Friends</h1>
+      <h1>Follow List</h1>
       <h2>Following</h2>
       <div>
         {following.map(friend => (

@@ -2,6 +2,7 @@ import { client } from "client";
 import { AnimeComponent } from "components/AnimeComponent";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./profile.module.css";
 
 export function Profiles({ owner }) {
   const [followers, setFollowers] = useState([]);
@@ -31,7 +32,7 @@ export function Profiles({ owner }) {
   return (
     <div>
       <h1>{owner.username}</h1>
-      <div>
+      <div className={styles.followCounters}>
         <Link to={`/Follow/${owner._id}`}>
           <h2>Following</h2>
           <p>{following.length}</p>
