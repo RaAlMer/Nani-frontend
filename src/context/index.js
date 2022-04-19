@@ -27,29 +27,28 @@ export function AuthContextProvider({ children }) {
   const loginGoogle = async (firstName, lastName, email, image, googleId) => {
     try {
       const response = await client.post("/auth/google/info", {
+        username: `${firstName}${lastName}`,
         firstName,
         lastName,
         email,
         image,
         googleId,
       });
-      // setting the user if it already existed in the database
-      if (response.data.user) {
-        setUser(response.data.user);
-      } else { 
-        // setting the user if it did NOT existed in the database
-        setUser(response.data.data);
-      }
+      // we save the token to local storage
+      saveToken(response.data.token);
+      // setting the user
+      setUser(response.data.user);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const tokenGoogle = (token) => {
+  /* const tokenGoogle = (token) => {
     // we save the token to local storage
     saveToken(token);
     navigate("/");
-  };
+  }; */
 
   const login = async (email, password) => {
     try {
@@ -94,7 +93,7 @@ export function AuthContextProvider({ children }) {
     user,
     signup,
     loginGoogle,
-    tokenGoogle,
+    /* tokenGoogle, */
     login,
     logout,
   };
