@@ -22,6 +22,10 @@ export function AuthContextProvider({ children }) {
       email,
       password,
     });
+    console.log(response)
+    if (response.status === 200) {
+      document.getElementById("tab-1").checked = true;
+    }
   };
 
   const loginGoogle = async (firstName, lastName, email, image, googleId) => {

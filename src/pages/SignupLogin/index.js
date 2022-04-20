@@ -1,5 +1,5 @@
 import { Signup, Login } from "components";
-import styles from "./Login.module.scss";
+import styles from "./SignupLogin.module.scss";
 import { useState, useContext } from "react";
 import { AuthContext } from "context";
 import {

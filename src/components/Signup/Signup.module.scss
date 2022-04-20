@@ -5,7 +5,6 @@ $pointer: pointer;
 
 @mixin general {
   width: $width;
-  color: $color;
   display: $display;
 }
 
@@ -14,10 +13,12 @@ $pointer: pointer;
   label {
     @include general;
     font-size: 12px;
+    color: $color;
   }
   input {
     @include general;
     border: none;
+    color: $color;
     padding: 15px 20px;
     border-radius: 25px;
     background: rgba(125, 13, 186, 0.1);
@@ -25,6 +26,7 @@ $pointer: pointer;
   .button {
     @include general;
     height: 55px;
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 17px;
