@@ -23,8 +23,11 @@ export function AddComment({ animeId, author, getComments }) {
         author,
       },
     );
+    getComments()
     handleReset()
   };
+
+  
   
   return (
     <form onSubmit={handleSubmit} className="comment">

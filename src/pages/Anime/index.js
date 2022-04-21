@@ -17,7 +17,8 @@ export function Anime() {
 
   useEffect(() => {
     getComments();
-  }, [comments]);
+  }, []);
+
 
   return (
     <>
@@ -26,7 +27,7 @@ export function Anime() {
         <AnimeComponent id={animeId} type="small" />
         <AnimeDropdown id={animeId} />
         <br />
-        <AddComment animeId={animeId} />
+        <AddComment animeId={animeId} getComments={getComments}/>
         <ListOfComments comments={comments} setComments={setComments}/>
       </div>
     </>
