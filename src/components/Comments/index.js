@@ -76,13 +76,11 @@ export function Comments({ commentId, content, setComments, comment }) {
           </div>
         ) : (
           <div className="tweet__actions">
-            {comment.author.username === userContext.user.username ? (
+            {comment.author.username === userContext.user.username && (
               <>
                 <button onClick={handleEdit}>Edit</button>
                 <button onClick={handleDelete}>Delete</button>
               </>
-            ) : (
-              <></>
             )}
             {content.length > 100 && (
               <button onClick={handleShowAll}>

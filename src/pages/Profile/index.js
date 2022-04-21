@@ -16,5 +16,5 @@ export function Profile() {
     getUser();
   }, []);
 
-  return <>{user && <Profiles owner={user} />}</>
+  return <>{user && <Profiles owner={user} setUser={setUser}/>}</>
 }
