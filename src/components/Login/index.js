@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "context";
 
 export function Login() {
-  const { login } = useContext(AuthContext);
+  const { login, error } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,6 +36,7 @@ export function Login() {
           }}
         />
       </div>
+      {error && <p>{error}</p>}
       <div className={styles.group}>
         <button className={styles.button}>Log In</button>
       </div>

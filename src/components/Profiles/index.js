@@ -9,7 +9,8 @@ export function Profiles({ owner, setUser }) {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [newUsername, setNewUsername] = useState(owner.username);
+  const [newUsername, setUsername] = useState(owner.username);
+  const [imageUrl, setImageUrl] = useState("");
   const userContext = useContext(AuthContext);
 
   const getFriends = async () => {
@@ -25,6 +26,17 @@ export function Profiles({ owner, setUser }) {
 
   const handleCancel = () => {
     setEdit(false);
+  };
+
+  const handleFileUpload = async (e) => {
+    const uploadData = new FormData();
+    uploadData.append("image", e.target.files[0]);
+    console.log(...uploadData)
+    const item = await client.put("/auth/profile", {
+      uploadData,
+    });
+    const result = item.data;
+    setImageUrl(result);
   };
 
   const handleSave = () => {
@@ -71,12 +83,18 @@ export function Profiles({ owner, setUser }) {
         </div>
       )}
       {edit ? (
-        <input
-          value={newUsername}
-          onChange={(event) => setNewUsername(event.target.value)}
-        />
+        <div>
+          <input type="file" onChange={(e) => handleFileUpload(e)} />
+          <input
+            value={newUsername}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
       ) : (
-        <h1>{owner.username}</h1>
+        <div>
+          <img src={owner.imageUrl} alt="profilePic" />
+          <h1>{owner.username}</h1>
+        </div>
       )}
       <div className={styles.followCounters}>
         <Link to={`/Follow/${owner._id}`}>

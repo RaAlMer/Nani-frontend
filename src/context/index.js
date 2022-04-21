@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -65,6 +66,7 @@ export function AuthContextProvider({ children }) {
       setUser(response.data.user);
       navigate("/");
     } catch (error) {
+      setError(error.response.data.message);
       console.log(error);
     }
   };
@@ -94,6 +96,7 @@ export function AuthContextProvider({ children }) {
 
   const value = {
     user,
+    error,
     signup,
     loginGoogle,
     /* tokenGoogle, */
