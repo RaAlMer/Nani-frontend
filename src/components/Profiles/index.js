@@ -43,19 +43,19 @@ export function Profiles({ owner }) {
         </Link>
       </div>
       <br />
-      <ul className="lists">
+      <ul className={styles.lists}>
         <li>
           <p>Watched</p>
         </li>
-        <ul className="list">{watchedList}</ul>
+        <ul className={styles.lists}>{watchedList}</ul>
         <li>
           <p>Watching</p>
         </li>
-        <ul className="list">{watchingList}</ul>
+        <ul className={styles.lists}>{watchingList}</ul>
         <li>
           <p>Plan To Watch</p>
         </li>
-        <ul className="list">{planToWatchList}</ul>
+        <ul className={styles.lists}>{planToWatchList}</ul>
       </ul>
     </div>
   );
