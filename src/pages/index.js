@@ -5,3 +5,5 @@ export { SignupLogin } from './SignupLogin';
 export { Search } from './Search';
 export { Anime } from './Anime';
 export { Follow } from './Follow';
+export { SearchFriend } from './SearchFriend';
+export { FriendProfile } from './FriendProfile';

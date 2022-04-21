@@ -33,6 +33,7 @@ export function Search() {
             search={search}
             setSearch={setSearch}
             setResults={setResults}
+            searchBarInput="anime"
           />
           {search !== "" && results.length > 0 ? (
             <ListAnime anime={results} />

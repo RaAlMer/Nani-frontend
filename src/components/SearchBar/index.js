@@ -3,11 +3,11 @@ import styles from "./Search.module.scss";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { useState } from "react";
 
-export function SearchBar({ search, setSearch, setResults }) {
+export function SearchBar({ search, setSearch, setResults, searchBarInput }) {
   const [isEmpty, setIsEmpty] = useState(false);
 
   const getSearchResult = async () => {
-    const item = await client.get(`/anime/search/${search}`);
+    const item = await client.get(`/${searchBarInput}/search/${search}`);
     const result = item.data;
     if (result.length === 0){
       setIsEmpty(true);
