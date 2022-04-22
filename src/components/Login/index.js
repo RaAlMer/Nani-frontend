@@ -1,6 +1,7 @@
 import styles from "./Login.module.scss";
 import { useState, useContext } from "react";
 import { AuthContext } from "context";
+import { Alert  } from "components/Alert";
 
 export function Login() {
   const { login, error } = useContext(AuthContext);
@@ -36,7 +37,7 @@ export function Login() {
           }}
         />
       </div>
-      {error && <p>{error}</p>}
+      {error && <Alert  type="error" message={error}/>}
       <div className={styles.group}>
         <button className={styles.button}>Log In</button>
       </div>
