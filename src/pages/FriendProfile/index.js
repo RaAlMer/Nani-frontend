@@ -13,9 +13,15 @@ export function FriendProfile() {
     setFriend(result);
   };
 
+  const followFriend = async () => {
+    const item = await client.get(`/friend/${friendId}/add`);
+    const result = item.data;
+    console.log(result);
+  }
+
   useEffect(() => {
     getFriend();
   }, []);
 
-  return <>{friend ? <Profiles owner={friend} /> : <div></div>}</>;
+  return <>{friend ? <Profiles owner={friend} followFriend={followFriend}/> : <div></div>}</>;
 }

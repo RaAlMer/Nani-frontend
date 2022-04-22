@@ -5,13 +5,14 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./profile.module.css";
 
-export function Profiles({ owner, setUser }) {
+export function Profiles({ owner, setUser, followFriend }) {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
   const [edit, setEdit] = useState(false);
   const [newUsername, setUsername] = useState(owner.username);
   const [imageUrl, setImageUrl] = useState("");
   const userContext = useContext(AuthContext);
+  const [unFollow, setUnFollow] = useState(false);
 
   const getFriends = async () => {
     const item = await client.get(`/friend/${owner._id}`);
@@ -31,7 +32,7 @@ export function Profiles({ owner, setUser }) {
   const handleFileUpload = async (e) => {
     const uploadData = new FormData();
     uploadData.append("image", e.target.files[0]);
-    console.log(...uploadData)
+    console.log(...uploadData);
     const item = await client.put("/auth/profile", {
       uploadData,
     });
@@ -51,9 +52,23 @@ export function Profiles({ owner, setUser }) {
     handleCancel();
   };
 
+  const handleFollowUnfollow = () => {
+    let followFr = followers.some((follow) => {
+      if (follow._id === userContext.user._id) {
+        return true;
+      }
+    })
+    if (followFr) {
+      setUnFollow(true);
+    } else {
+      setUnFollow(false);
+    }
+  }
+
   useEffect(() => {
     getFriends();
-  }, []);
+    handleFollowUnfollow();
+  }, [following]);
 
   const watchedList = owner.watched.map((item) => {
     return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
@@ -94,6 +109,12 @@ export function Profiles({ owner, setUser }) {
         <div>
           <img src={owner.imageUrl} alt="profilePic" />
           <h1>{owner.username}</h1>
+          {/* If the id from the user is different from the id of the profile, it will show the Follow button */}
+          {owner._id !== userContext.user._id && (
+            <button onClick={followFriend}>
+              {unFollow ? "Unfollow" : "Follow"}
+            </button>
+          )}
         </div>
       )}
       <div className={styles.followCounters}>
