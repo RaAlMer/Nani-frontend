@@ -4,7 +4,7 @@ import { AuthContext } from "context";
 import { Alert  } from "components";
 
 export function Login() {
-  const { login, error } = useContext(AuthContext);
+  const { login, loginError } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -37,7 +37,7 @@ export function Login() {
           }}
         />
       </div>
-      {error && <Alert  type="error" message={error}/>}
+      {loginError && <Alert  type="error" message={loginError}/>}
       <div className={styles.group}>
         <button className={styles.button}>Log In</button>
       </div>

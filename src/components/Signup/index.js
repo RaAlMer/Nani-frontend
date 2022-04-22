@@ -1,11 +1,12 @@
 import styles from "./Signup.module.scss";
 import { useState, useContext } from "react";
 import { AuthContext } from "context";
+import { Alert } from "components";
 
 /* import { client } from "../../client"; */
 
 export function Signup() {
-  const { signup } = useContext(AuthContext);
+  const { signup, signupError } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +18,7 @@ export function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
+    {signupError && <Alert  type="error" message={signupError}/>}
       <div className={styles.group}>
         <label htmlFor="username">Username:</label>
         <input

@@ -7,7 +7,8 @@ export const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
+  const [loginError, setLoginError] = useState(null);
+  const [signupError, setSignupError] = useState(null);
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -18,13 +19,15 @@ export function AuthContextProvider({ children }) {
   };
 
   const signup = async (username, email, password) => {
-    const response = await client.post("/auth/signup", {
-      username,
-      email,
-      password,
-    });
-    if (response.status === 200) {
+    try {
+      const response = await client.post("/auth/signup", {
+        username,
+        email,
+        password,
+      });
       document.getElementById("tab-1").checked = true;
+    } catch (error) {
+      setSignupError(error.response.data.message);
     }
   };
 
@@ -66,7 +69,7 @@ export function AuthContextProvider({ children }) {
       setUser(response.data.user);
       navigate("/");
     } catch (error) {
-      setError(error.response.data.message);
+      setLoginError(error.response.data.message);
       console.log(error);
     }
   };
@@ -96,7 +99,8 @@ export function AuthContextProvider({ children }) {
 
   const value = {
     user,
-    error,
+    loginError,
+    signupError,
     signup,
     loginGoogle,
     /* tokenGoogle, */
