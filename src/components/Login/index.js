@@ -1,7 +1,7 @@
 import styles from "./Login.module.scss";
 import { useState, useContext } from "react";
 import { AuthContext } from "context";
-import { Alert  } from "components/Alert";
+import { Alert  } from "components";
 
 export function Login() {
   const { login, error } = useContext(AuthContext);

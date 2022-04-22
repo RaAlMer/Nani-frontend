@@ -11,3 +11,4 @@ export { AnimeDropdown } from './AnimeDropdown';
 export { Comments } from './Comments';
 export { AddComment } from './AddComment';
 export { ListOfComments } from './ListOfComments';
+export { Alert } from './Alert';

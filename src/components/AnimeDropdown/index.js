@@ -1,18 +1,10 @@
 import { client } from "../../client";
 import { useState } from "react";
 
-export function AnimeDropdown({ id }) {
+export function AnimeDropdown({ addWatched, addWatching, addPlanToWatch, id }) {
   const [show, setShow] = useState(false);
 
-  const addWatched = async () => {
-    await client.get(`/anime/addList/${id}/watched`);
-  };
-  const addWatching = async () => {
-    await client.get(`/anime/addList/${id}/watching`);
-  };
-  const addPlanToWatch = async () => {
-    await client.get(`/anime/addList/${id}/planToWatch`);
-  };
+  
 
   return (
     <div>
