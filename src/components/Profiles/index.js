@@ -4,6 +4,7 @@ import { AuthContext } from "context";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./profile.module.css";
+import { AiFillEdit, AiFillFileImage } from "react-icons/ai";
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -85,7 +86,7 @@ export function Profiles({ owner, followFriend }) {
         <div>
           {owner._id === user._id && (
             <>
-              <button onClick={handleEdit}>Edit</button>
+              <button onClick={handleEdit}><AiFillEdit/></button>
               {/* <button onClick={handleDelete}>Delete</button> */}
             </>
           )}
@@ -93,7 +94,7 @@ export function Profiles({ owner, followFriend }) {
       )}
       {edit ? (
         <div className={styles.editProfile}>
-          <button onClick={handleEditImg}>Edit user image</button>
+          <button onClick={handleEditImg}><AiFillFileImage/>Upload</button>
           <input
             value={newUsername}
             onChange={(event) => {setUsername(event.target.value); setCanSave(true)}}
