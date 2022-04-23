@@ -25,7 +25,7 @@ body {
   width: 100%;
   margin: 40px auto;
   max-width: 525px;
-  min-height: 680px;
+  min-height: 700px;
   position: relative;
   box-shadow: $boxShadowForm;
 }
@@ -86,7 +86,6 @@ body {
   display: flex;
   list-style: none;
   justify-content: center;
-  
   .icon {
     position: relative;
     background: #ffffff;

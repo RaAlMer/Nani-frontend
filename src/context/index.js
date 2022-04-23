@@ -18,6 +18,13 @@ export function AuthContextProvider({ children }) {
     localStorage.removeItem("token");
   };
 
+  const getUser = async () => {
+    const item = await client.get("/auth/profile");
+    const result = item.data;
+    console.log(result)
+    setUser(result);
+  };
+
   const signup = async (username, email, password) => {
     try {
       const response = await client.post("/auth/signup", {
@@ -44,8 +51,10 @@ export function AuthContextProvider({ children }) {
       // we save the token to local storage
       saveToken(response.data.token);
       // setting the user
-      setUser(response.data.user);
-      navigate("/");
+      if (response.status === 200){
+        getUser();
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -66,8 +75,10 @@ export function AuthContextProvider({ children }) {
       // we save the token to local storage
       saveToken(response.data.token);
       // setting the user
-      setUser(response.data.user);
-      navigate("/");
+      if (response.status === 200){
+        getUser();
+        navigate("/");
+      }
     } catch (error) {
       setLoginError(error.response.data.message);
     }
@@ -76,8 +87,10 @@ export function AuthContextProvider({ children }) {
   const verify = async () => {
     try {
       const response = await client.get("/auth/verify");
-      setUser(response.data.user);
-      navigate("/");
+      if (response.status === 200){
+        getUser();
+        navigate("/");
+      }
     } catch (error) {
       navigate("/login-signup");
     }
@@ -98,6 +111,8 @@ export function AuthContextProvider({ children }) {
 
   const value = {
     user,
+    getUser,
+    setUser,
     loginError,
     signupError,
     signup,

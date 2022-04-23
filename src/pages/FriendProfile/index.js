@@ -16,7 +16,7 @@ export function FriendProfile() {
   const followFriend = async () => {
     const item = await client.get(`/friend/${friendId}/add`);
     const result = item.data;
-    console.log(result);
+    getFriend();
   }
 
   useEffect(() => {

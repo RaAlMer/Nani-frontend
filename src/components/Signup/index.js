@@ -18,7 +18,6 @@ export function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
-    {signupError && <Alert  type="error" message={signupError}/>}
       <div className={styles.group}>
         <label htmlFor="username">Username:</label>
         <input

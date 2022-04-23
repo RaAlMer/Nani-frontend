@@ -37,7 +37,6 @@ export function Login() {
           }}
         />
       </div>
-      {loginError && <Alert  type="error" message={loginError}/>}
       <div className={styles.group}>
         <button className={styles.button}>Log In</button>
       </div>

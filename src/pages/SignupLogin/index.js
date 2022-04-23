@@ -10,11 +10,12 @@ import {
   FaGoogle,
 } from "react-icons/fa";
 import GoogleLogin from "react-google-login";
+import { Alert  } from "components";
 /* import FacebookLogin from "react-facebook-login";
 import { client } from "../../client"; */
 
 export function SignupLogin() {
-  const { loginGoogle, tokenGoogle } = useContext(AuthContext);
+  const { loginGoogle, loginError, signupError } = useContext(AuthContext);
   /* const [showLoading, setShowLoading] = useState(false); */
 
   /* const onFacebookResponse = (data) => {
@@ -81,6 +82,8 @@ export function SignupLogin() {
             <Signup />
           </div>
         </div>
+        {loginError && <Alert  type="error" message={loginError}/>}
+        {signupError && <Alert  type="error" message={signupError}/>}
         <ul className={styles.wrapper}>
           {/* <li className={`${styles.icon} ${styles.facebook}`}>
             <span className={styles.tooltip}>Facebook</span>
