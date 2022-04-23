@@ -36,6 +36,7 @@ export function Profiles({ owner, followFriend }) {
       }
     })
     if (file) {
+      setCanSave(false);
       handleFileUpload(file);
     }
   }
