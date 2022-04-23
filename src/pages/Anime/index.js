@@ -1,21 +1,17 @@
 import styles from "./Anime.module.css";
-import { AnimeComponent, AddComment, ListOfComments } from "../../components";
+import { AnimeComponent, ListOfComments, CommentForm } from "../../components";
 import { useParams } from "react-router-dom";
 import { AnimeDropdown } from "components/AnimeDropdown";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { client } from "client";
 import { Alert } from "../../components";
+import { AuthContext } from "context";
+import "./index.css"
 
 export function Anime() {
+  const { user } = useContext(AuthContext);
   const { animeId } = useParams();
-  const [comments, setComments] = useState([]);
   const [addListStatus, setAddListStatus] = useState(false);
-  
-  const getComments = async () => {
-    const item = await client.get(`/comments/${animeId}`);
-    const result = item.data;
-    setComments(result);
-  };
 
   const addWatched = async () => {
     try {
@@ -24,7 +20,7 @@ export function Anime() {
         setAddListStatus(true);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   const addWatching = async () => {
@@ -34,7 +30,7 @@ export function Anime() {
         setAddListStatus(true);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   const addPlanToWatch = async () => {
@@ -44,13 +40,9 @@ export function Anime() {
         setAddListStatus(true);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
-
-  useEffect(() => {
-    getComments();
-  }, []);
 
 
   return (
@@ -58,13 +50,18 @@ export function Anime() {
       <div>
         <h1>Anime</h1>
         <AnimeComponent id={animeId} type="small" />
-        <AnimeDropdown addWatched={addWatched} addWatching={addWatching} addPlanToWatch={addPlanToWatch} />
-        {addListStatus && <Alert type="success" message="Added to list" >
-          <h3>Successfully added to your List</h3>
-        </Alert>}
+        <AnimeDropdown
+          addWatched={addWatched}
+          addWatching={addWatching}
+          addPlanToWatch={addPlanToWatch}
+        />
+        {addListStatus && (
+          <Alert type="success" message="Added to list">
+            <h3>Successfully added to your List</h3>
+          </Alert>
+        )}
         <br />
-        <AddComment animeId={animeId} getComments={getComments}/>
-        <ListOfComments comments={comments} setComments={setComments}/>
+        <ListOfComments currentUserId={user ? user._id : null} animeId={animeId} />
       </div>
     </>
   );
