@@ -70,7 +70,6 @@ export function AuthContextProvider({ children }) {
       navigate("/");
     } catch (error) {
       setLoginError(error.response.data.message);
-      console.log(error);
     }
   };
 
