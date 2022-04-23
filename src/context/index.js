@@ -21,7 +21,6 @@ export function AuthContextProvider({ children }) {
   const getUser = async () => {
     const item = await client.get("/auth/profile");
     const result = item.data;
-    console.log(result)
     setUser(result);
   };
 

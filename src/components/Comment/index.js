@@ -28,9 +28,6 @@ export function Comment({
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
 
-  console.log(currentUserId)
-  console.log("comment userID", comment.userId)
-
   return (
     <div key={comment.id} className="comment">
       <div className="comment-image-container">

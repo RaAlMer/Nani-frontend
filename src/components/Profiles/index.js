@@ -5,15 +5,42 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./profile.module.css";
 
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+
 export function Profiles({ owner, followFriend }) {
   const [edit, setEdit] = useState(false);
   const [newUsername, setUsername] = useState(owner.username);
   const [imageUrl, setImageUrl] = useState();
   const { user, getUser } = useContext(AuthContext);
 
+  const handleSave = async () => {
+    await client.put(`/auth/profile`, {
+      username: newUsername,
+      userId: owner._id,
+      image: imageUrl,
+    });
+    await getUser();
+    setEdit(false);
+  };
+
+  const handleEditImg = async () => {
+    const { value: file } = await Swal.fire({
+      title: 'Select image',
+      input: 'file',
+      inputAttributes: {
+        'accept': 'image/*',
+        'aria-label': 'Upload your profile picture'
+      }
+    })
+    if (file) {
+      handleFileUpload(file);
+    }
+  }
+
   const handleEdit = () => {
     setEdit(true);
-  };
+  }
 
   const handleCancel = () => {
     setEdit(false);
@@ -25,23 +52,14 @@ export function Profiles({ owner, followFriend }) {
       .catch((err) => console.log(err))
   }
 
-  const handleFileUpload = async (e) => {
+  const handleFileUpload = async (image) => {
     const file = new FormData()
-    file.append("image", e.target.files[0])
+    file.append("image", image)
+    console.log(...file)
     uploadImage(file)
       .then(response => setImageUrl(response.path))
       .catch(err => console.log("Error while uploading the file: ", err))
   }
-
-  const handleSave = () => {
-    client.put(`/auth/profile`, {
-      username: newUsername,
-      userId: owner._id,
-      image: imageUrl,
-    });
-    getUser();
-    handleCancel();
-  };
 
   const watchedList = owner.watched.map((item) => {
     return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
@@ -71,8 +89,8 @@ export function Profiles({ owner, followFriend }) {
         </div>
       )}
       {edit ? (
-        <div>
-          <input type="file" name="image" onChange={handleFileUpload} />
+        <div className={styles.editProfile}>
+          <button onClick={handleEditImg}>Edit user image</button>
           <input
             value={newUsername}
             onChange={(event) => setUsername(event.target.value)}

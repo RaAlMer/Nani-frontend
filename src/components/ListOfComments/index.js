@@ -1,7 +1,9 @@
 import { client } from "client";
-import { Comment } from "components/Comment";
-import { CommentForm } from "components";
+import { CommentForm, Comment } from "components";
 import { useEffect, useState } from "react";
+
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 export function ListOfComments({ currentUserId, animeId }) {
   const [backendComments, setBackendComments] = useState([]);
@@ -51,14 +53,27 @@ export function ListOfComments({ currentUserId, animeId }) {
   };
 
   const deleteComment = (commentId) => {
-    if (window.confirm("Are you sure you want to DELETE this comment?")) {
-      client.delete(`/comments/${commentId}`).then(() => {
-        const updatedBackendComments = backendComments.filter(
-          (backendComment) => backendComment.id !== commentId
-        );
-        setBackendComments(updatedBackendComments);
-      });
-    }
+    Swal.fire({
+      title: 'Are you sure you want to DELETE this comment?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete comment',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#c890d1',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        client.delete(`/comments/${commentId}`).then(() => {
+          const updatedBackendComments = backendComments.filter(
+            (backendComment) => backendComment.id !== commentId
+          );
+          setBackendComments(updatedBackendComments);
+        });
+        Swal.fire('Saved!', '', 'success');
+      } else {
+        Swal.fire('Comment was not deleted', '', 'error')
+      }
+    })
     getComments();
   };
 
@@ -71,7 +86,7 @@ export function ListOfComments({ currentUserId, animeId }) {
   useEffect(() => {
     getComments();
   }, []);
-  
+
   return (
     <div className="comments">
       <h3 className="comments-title">Comments</h3>
