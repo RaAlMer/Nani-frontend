@@ -30,7 +30,7 @@ export function Comment({
   return (
     <div key={comment.id} className="comment">
       <div className="comment-image-container">
-        <img src="#" />
+        <img src={comment.author.image} alt="#" width="40"/>
       </div>
       <div className="comment-right-part">
         <div className="comment-content">

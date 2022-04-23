@@ -80,7 +80,7 @@ export function Profiles({ owner, followFriend }) {
         </div>
       ) : (
         <div>
-          <img src={owner.image} alt="profilePic" />
+          <img src={owner.image} alt="profilePic" width="100"/>
           <h1>{owner.username}</h1>
           {/* If the id from the user is different from the id of the profile, it will show the Follow button */}
           {owner._id !== user._id && (
