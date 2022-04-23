@@ -1,4 +1,5 @@
 import { CommentForm } from "components";
+import { useState } from "react";
 
 export function Comment({
   comment,
@@ -27,6 +28,7 @@ export function Comment({
     currentUserId === comment.author._id && replies.length === 0 && !timePassed;
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+const [isEdited, setIsEdited] = useState(false);
 
   console.log(currentUserId)
   console.log("comment userID", comment.userId)
@@ -66,7 +68,7 @@ export function Comment({
             <div
               className="comment-action"
               onClick={() =>
-                setActiveComment({ id: comment.id, type: "editing" })
+                {setActiveComment({ id: comment.id, type: "editing" }); setIsEdited(true)}
               }
             >
               Edit
@@ -80,6 +82,7 @@ export function Comment({
               Delete
             </div>
           )}
+          {isEdited && <p>{"(edited)"}</p>}
         </div>
         {isReplying && (
           <CommentForm
