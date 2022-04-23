@@ -1,16 +1,21 @@
 import styles from "./Login.module.scss";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { AuthContext } from "context";
-import { Alert  } from "components";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export function Login() {
-  const { login, loginError } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const recaptchaRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+
+    const captchaToken = await recaptchaRef.current.getValue();
+    recaptchaRef.current.reset();
+
+    login(email, password, captchaToken);
   };
 
   return (
@@ -41,6 +46,12 @@ export function Login() {
         <button className={styles.button}>Log In</button>
       </div>
       <div className={styles.hr}></div>
+      <div className={styles.captcha}>
+        <ReCAPTCHA
+          sitekey="6LfvUZYfAAAAAG3JRIpBf5Isk78Msn948ZW-XZSv"
+          ref={recaptchaRef}
+        />
+      </div>
       <div className={styles.foot_lnk}>
         <a href="#">Forgot Password?</a>
       </div>

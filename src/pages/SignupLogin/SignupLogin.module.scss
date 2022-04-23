@@ -33,7 +33,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  padding: 90px 70px 50px 70px;
+  padding: 60px 70px 50px 70px;
   background: rgba(255, 255, 255, 0.9);
 }
 .login_form .log_in_component,
@@ -65,7 +65,7 @@ body {
   border-color: #ba11ee;
 }
 .login_form {
-  min-height: 345px;
+  min-height: 420px;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;

@@ -24,12 +24,13 @@ export function AuthContextProvider({ children }) {
     setUser(result);
   };
 
-  const signup = async (username, email, password) => {
+  const signup = async (username, email, password, confirmPassword) => {
     try {
       const response = await client.post("/auth/signup", {
         username,
         email,
         password,
+        confirmPassword,
       });
       document.getElementById("tab-1").checked = true;
     } catch (error) {
@@ -50,7 +51,7 @@ export function AuthContextProvider({ children }) {
       // we save the token to local storage
       saveToken(response.data.token);
       // setting the user
-      if (response.status === 200){
+      if (response.status === 200) {
         getUser();
         navigate("/");
       }
@@ -65,19 +66,20 @@ export function AuthContextProvider({ children }) {
     navigate("/");
   }; */
 
-  const login = async (email, password) => {
+  const login = async (email, password, captchaToken) => {
     try {
-      const response = await client.post("/auth/login", {
-        email,
-        password,
-      });
-      // we save the token to local storage
-      saveToken(response.data.token);
-      // setting the user
-      if (response.status === 200){
-        getUser();
-        navigate("/");
-      }
+        const response = await client.post("/auth/login", {
+          email,
+          password,
+          captchaToken,
+        });
+        // we save the token to local storage
+        saveToken(response.data.token);
+        // setting the user
+        if (response.status === 200) {
+          getUser();
+          navigate("/");
+        }
     } catch (error) {
       setLoginError(error.response.data.message);
     }
@@ -86,7 +88,7 @@ export function AuthContextProvider({ children }) {
   const verify = async () => {
     try {
       const response = await client.get("/auth/verify");
-      if (response.status === 200){
+      if (response.status === 200) {
         getUser();
         navigate("/");
       }
