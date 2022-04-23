@@ -22,8 +22,8 @@ export function ListOfComments({ currentUserId, animeId }) {
       );
   };
 
-  const addComment = (commentInput, parentId) => {
-    client
+  const addComment = async (commentInput, parentId) => {
+    await client
       .post(`/comments/${animeId}`, {
         content: commentInput,
         parentId,
@@ -32,7 +32,7 @@ export function ListOfComments({ currentUserId, animeId }) {
         setBackendComments([comment, ...backendComments]);
         setActiveComment(null);
       });
-      getComments();
+      await getComments();
   };
 
   const updateComment = (text, commentId) => {

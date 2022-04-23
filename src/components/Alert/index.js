@@ -1,7 +1,6 @@
-import style from "./Alert.module.scss";
+import style from "./alert.module.scss";
 import css from "classnames";
-import React, { useContext, useState } from "react";
-import { AuthContext } from "context";
+import React, { useState } from "react";
 
 export function Alert ({ children, type, message }) {
   const [isShow, setIsShow] = useState(true);
