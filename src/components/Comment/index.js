@@ -24,9 +24,13 @@ export function Comment({
   const canReply = Boolean(currentUserId);
   const canEdit = currentUserId === comment.author._id && !timePassed;
   const canDelete =
-    currentUserId === comment.userId && replies.length === 0 && !timePassed;
+    currentUserId === comment.author._id && replies.length === 0 && !timePassed;
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+
+  console.log(currentUserId)
+  console.log("comment userID", comment.userId)
+
   return (
     <div key={comment.id} className="comment">
       <div className="comment-image-container">

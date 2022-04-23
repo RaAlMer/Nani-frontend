@@ -44,7 +44,6 @@ export function Anime() {
     }
   };
 
-
   return (
     <>
       <div>

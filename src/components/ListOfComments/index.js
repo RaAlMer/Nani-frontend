@@ -30,6 +30,7 @@ export function ListOfComments({ currentUserId, animeId }) {
         setBackendComments([comment, ...backendComments]);
         setActiveComment(null);
       });
+      getComments();
   };
 
   const updateComment = (text, commentId) => {
@@ -45,6 +46,8 @@ export function ListOfComments({ currentUserId, animeId }) {
       setBackendComments(updatedBackendComments);
       setActiveComment(null);
     });
+    getComments();
+    getReplies();
   };
 
   const deleteComment = (commentId) => {
@@ -56,6 +59,7 @@ export function ListOfComments({ currentUserId, animeId }) {
         setBackendComments(updatedBackendComments);
       });
     }
+    getComments();
   };
 
   const getComments = async () => {
@@ -66,8 +70,8 @@ export function ListOfComments({ currentUserId, animeId }) {
 
   useEffect(() => {
     getComments();
-  }, [backendComments]);
-
+  }, []);
+  
   return (
     <div className="comments">
       <h3 className="comments-title">Comments</h3>
