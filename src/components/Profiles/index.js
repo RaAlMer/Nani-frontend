@@ -13,6 +13,7 @@ export function Profiles({ owner, followFriend }) {
   const [newUsername, setUsername] = useState(owner.username);
   const [imageUrl, setImageUrl] = useState();
   const { user, getUser } = useContext(AuthContext);
+  const [canSave, setCanSave] = useState(false);
 
   const handleSave = async () => {
     await client.put(`/auth/profile`, {
@@ -22,6 +23,7 @@ export function Profiles({ owner, followFriend }) {
     });
     await getUser();
     setEdit(false);
+    setCanSave(false);
   };
 
   const handleEditImg = async () => {
@@ -57,7 +59,7 @@ export function Profiles({ owner, followFriend }) {
     file.append("image", image)
     console.log(...file)
     uploadImage(file)
-      .then(response => setImageUrl(response.path))
+      .then(response => {setImageUrl(response.path); setCanSave(true)})
       .catch(err => console.log("Error while uploading the file: ", err))
   }
 
@@ -75,7 +77,7 @@ export function Profiles({ owner, followFriend }) {
     <div>
       {edit ? (
         <div>
-          <button onClick={handleSave}>Save</button>
+          <button onClick={handleSave} disabled={!canSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
         </div>
       ) : (
@@ -93,7 +95,7 @@ export function Profiles({ owner, followFriend }) {
           <button onClick={handleEditImg}>Edit user image</button>
           <input
             value={newUsername}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) => {setUsername(event.target.value); setCanSave(true)}}
           />
         </div>
       ) : (
