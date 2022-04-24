@@ -9,6 +9,7 @@ export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loginError, setLoginError] = useState(null);
   const [signupError, setSignupError] = useState(null);
+  const [sentMail, setSentMail] = useState(null);
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -24,7 +25,16 @@ export function AuthContextProvider({ children }) {
     setUser(result);
   };
 
-  const signup = async (username, email, password, confirmPassword) => {
+  const sendEmail = async (email, url) => {
+    const result = await client.post("/email", {
+      email,
+      url,
+    })
+    // Message confirming mail sent
+    setSentMail(result.data.msg);
+  }
+
+  const signup = async (username, email, password, confirmPassword, url) => {
     try {
       const response = await client.post("/auth/signup", {
         username,
@@ -33,6 +43,7 @@ export function AuthContextProvider({ children }) {
         confirmPassword,
       });
       document.getElementById("tab-1").checked = true;
+      sendEmail(email, url);
     } catch (error) {
       setSignupError(error.response.data.message);
     }
@@ -97,6 +108,15 @@ export function AuthContextProvider({ children }) {
     }
   };
 
+  const verifyEmail = async (id) => {
+    try {
+      const response = await client.get(`/email/confirm/${id}`);
+      console.log(response)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const logout = () => {
     deleteToken();
     setUser(null);
@@ -116,6 +136,9 @@ export function AuthContextProvider({ children }) {
     setUser,
     loginError,
     signupError,
+    sendEmail,
+    sentMail,
+    verifyEmail,
     signup,
     loginGoogle,
     /* tokenGoogle, */

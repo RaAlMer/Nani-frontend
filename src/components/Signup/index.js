@@ -2,8 +2,6 @@ import styles from "./Signup.module.scss";
 import { useState, useContext } from "react";
 import { AuthContext } from "context";
 
-/* import { client } from "../../client"; */
-
 export function Signup() {
   const { signup } = useContext(AuthContext);
   const [username, setUsername] = useState("");
@@ -13,7 +11,8 @@ export function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(username, email, password, confirmPassword);
+    const url = window.location.host;
+    signup(username, email, password, confirmPassword, url);
   };
 
   return (
@@ -62,7 +61,7 @@ export function Signup() {
         />
       </div>
       <div className={styles.group}>
-        <button className={styles.button}>Sign Up</button>
+        <button className={styles.button}>Sign up</button>
       </div>
       <div className={styles.hr}></div>
     </form>

@@ -2,9 +2,10 @@ import styles from "./Login.module.scss";
 import { useState, useContext, useRef } from "react";
 import { AuthContext } from "context";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Alert } from "components";
 
 export function Login() {
-  const { login } = useContext(AuthContext);
+  const { login, sentMail } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const recaptchaRef = useRef(null);
@@ -52,6 +53,7 @@ export function Login() {
           ref={recaptchaRef}
         />
       </div>
+      {sentMail && <Alert  type="success" message={sentMail}/>}
       <div className={styles.foot_lnk}>
         <a href="#">Forgot Password?</a>
       </div>

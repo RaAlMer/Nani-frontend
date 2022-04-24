@@ -1,0 +1,25 @@
+$boxShadow: 0px 0px 15px 5px rgba(60, 0, 40, 0.6);
+$space: 40px;
+$center: center;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: $center;
+  align-items: $center;
+  gap: $space;
+  -webkit-box-shadow: $boxShadow;
+  box-shadow: $boxShadow;
+  min-height: $space*10;
+}
+.join {
+  color: rgb(156, 14, 156);
+}
+.btn {
+  font: bold 18px Arial;
+  text-decoration: none;
+  background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
+  color: white;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+}

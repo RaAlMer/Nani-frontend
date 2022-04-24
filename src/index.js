@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, NotFound, Profile, SignupLogin, Search, Anime, SearchFriend, Follow, FriendProfile } from "./pages";
+import { Home, NotFound, Profile, SignupLogin, Search, Anime, SearchFriend, Follow, FriendProfile, Confirm } from "./pages";
 import { AuthContextProvider } from "./context";
 import { PrivateRoute } from "./components";
 
@@ -24,6 +24,7 @@ ReactDOM.render(
               }
             />
             <Route path="/login-signup" element={<SignupLogin />} />
+            <Route path="/confirm/:id" element={<Confirm />} />
             <Route path="/search" element={<Search />} />
             <Route path="/friends" element={<SearchFriend />} />
             <Route path="/Follow/:id" element={<Follow />} />
