@@ -28,12 +28,12 @@ export function Comment({
     currentUserId === comment.author._id && replies.length === 0 && !timePassed;
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
-const [isEdited, setIsEdited] = useState(false);
+  const [isEdited, setIsEdited] = useState(false);
 
   return (
     <div key={comment.id} className="comment">
       <div className="comment-image-container">
-        <img src={comment.author.image} alt="#" width="40"/>
+        <img src={comment.author.image} alt="#" width="40" />
       </div>
       <div className="comment-right-part">
         <div className="comment-content">
@@ -64,9 +64,10 @@ const [isEdited, setIsEdited] = useState(false);
           {canEdit && (
             <div
               className="comment-action"
-              onClick={() =>
-                {setActiveComment({ id: comment.id, type: "editing" }); setIsEdited(true)}
-              }
+              onClick={() => {
+                setActiveComment({ id: comment.id, type: "editing" });
+                setIsEdited(true);
+              }}
             >
               Edit
             </div>

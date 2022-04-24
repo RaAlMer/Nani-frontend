@@ -4,6 +4,7 @@ import { AuthContext } from "context";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./profile.module.css";
+import { AiFillEdit, AiFillFileImage } from "react-icons/ai";
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -13,6 +14,7 @@ export function Profiles({ owner, followFriend }) {
   const [newUsername, setUsername] = useState(owner.username);
   const [imageUrl, setImageUrl] = useState();
   const { user, getUser } = useContext(AuthContext);
+  const [canSave, setCanSave] = useState(false);
 
   const handleSave = async () => {
     await client.put(`/auth/profile`, {
@@ -22,6 +24,7 @@ export function Profiles({ owner, followFriend }) {
     });
     await getUser();
     setEdit(false);
+    setCanSave(false);
   };
 
   const handleEditImg = async () => {
@@ -34,6 +37,7 @@ export function Profiles({ owner, followFriend }) {
       }
     })
     if (file) {
+      setCanSave(false);
       handleFileUpload(file);
     }
   }
@@ -57,7 +61,7 @@ export function Profiles({ owner, followFriend }) {
     file.append("image", image)
     console.log(...file)
     uploadImage(file)
-      .then(response => setImageUrl(response.path))
+      .then(response => {setImageUrl(response.path); setCanSave(true)})
       .catch(err => console.log("Error while uploading the file: ", err))
   }
 
@@ -75,14 +79,14 @@ export function Profiles({ owner, followFriend }) {
     <div>
       {edit ? (
         <div>
-          <button onClick={handleSave}>Save</button>
+          <button onClick={handleSave} disabled={!canSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
         </div>
       ) : (
         <div>
           {owner._id === user._id && (
             <>
-              <button onClick={handleEdit}>Edit</button>
+              <button onClick={handleEdit}><AiFillEdit/></button>
               {/* <button onClick={handleDelete}>Delete</button> */}
             </>
           )}
@@ -90,10 +94,10 @@ export function Profiles({ owner, followFriend }) {
       )}
       {edit ? (
         <div className={styles.editProfile}>
-          <button onClick={handleEditImg}>Edit user image</button>
+          <button onClick={handleEditImg}><AiFillFileImage/>Upload</button>
           <input
             value={newUsername}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) => {setUsername(event.target.value); setCanSave(true)}}
           />
         </div>
       ) : (
