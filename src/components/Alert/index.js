@@ -1,4 +1,4 @@
-import style from "./alert.module.scss";
+import style from "./Alert.module.scss";
 import css from "classnames";
 import React, { useState } from "react";
 
