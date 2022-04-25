@@ -59,7 +59,6 @@ export function Profiles({ owner, followFriend }) {
   const handleFileUpload = async (image) => {
     const file = new FormData()
     file.append("image", image)
-    console.log(...file)
     uploadImage(file)
       .then(response => {setImageUrl(response.path); setCanSave(true)})
       .catch(err => console.log("Error while uploading the file: ", err))
