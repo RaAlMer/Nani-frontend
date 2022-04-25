@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { client } from "../client";
 import { useNavigate } from "react-router-dom";
+import { io } from "socket.io-client";
 
 export const AuthContext = createContext();
 
@@ -10,6 +11,17 @@ export function AuthContextProvider({ children }) {
   const [loginError, setLoginError] = useState(null);
   const [signupError, setSignupError] = useState(null);
   const [sentMail, setSentMail] = useState(null);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:5000"));
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+    socket?.emit("newUser", user?._id)
+    }
+  }, [socket, user])
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -153,6 +165,7 @@ export function AuthContextProvider({ children }) {
   }, []);
 
   const value = {
+    socket,
     user,
     getUser,
     setUser,

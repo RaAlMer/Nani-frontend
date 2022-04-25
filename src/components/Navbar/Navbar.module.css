@@ -16,11 +16,35 @@ nav {
   align-items: center;
   position: relative;
 }
+.counter {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  font-size: 12px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+.notifications{
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  background-color: white;
+  color:black;
+  font-weight: 300;
+  padding: 10px;
+}
 .items {
   margin-right: 20px;
   font-size: 20px;
   text-transform: uppercase;
   cursor: pointer;
+  position: relative;
 }
 .items a {
   text-decoration: none;
