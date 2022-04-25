@@ -8,3 +8,5 @@ export { Follow } from './Follow';
 export { SearchFriend } from './SearchFriend';
 export { FriendProfile } from './FriendProfile';
 export { Confirm } from './Confirm';
+export { ResetPass } from './ResetPass';
+export { ResetPassToken } from './ResetPassToken';

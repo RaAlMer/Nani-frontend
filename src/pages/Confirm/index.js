@@ -19,7 +19,7 @@ export function Confirm() {
   }, []);
 
   return (
-    <div className="confirm">
+    <div className={styles.confirm}>
       {confirming ? (
         <Spinner />
       ) : (

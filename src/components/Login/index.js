@@ -3,6 +3,7 @@ import { useState, useContext, useRef } from "react";
 import { AuthContext } from "context";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Alert } from "components";
+import { Link } from "react-router-dom";
 
 export function Login() {
   const { login, sentMail } = useContext(AuthContext);
@@ -55,7 +56,7 @@ export function Login() {
       </div>
       {sentMail && <Alert  type="success" message={sentMail}/>}
       <div className={styles.foot_lnk}>
-        <a href="#">Forgot Password?</a>
+        <Link to="/reset-pass">Forgot Password?</Link>
       </div>
     </form>
   );

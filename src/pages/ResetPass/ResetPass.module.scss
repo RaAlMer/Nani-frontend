@@ -1,0 +1,78 @@
+$color: rgb(0, 0, 0);
+$display: block;
+$width: 100%;
+.container {
+  width: 100%;
+  margin: 40px auto;
+  max-width: 400px;
+  height: 360px;
+  position: relative;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  .login_form {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 60px 70px 50px 70px;
+    background: rgba(255, 255, 255, 0.9);
+    .group {
+      margin-bottom: 26px;
+      label {
+        width: $width;
+        color: $color;
+        display: $display;
+        color: rgb(35, 33, 33);
+        font-size: 12px;
+      }
+      input {
+        width: $width;
+        color: $color;
+        display: $display;
+        border: none;
+        padding: 15px 20px;
+        border-radius: 25px;
+        background: rgba(125, 13, 186, 0.1);
+      }
+      .button {
+        width: $width;
+        color: white;
+        display: $display;
+        height: 55px;
+        border: none;
+        border-radius: 5px;
+        font-size: 17px;
+        font-weight: 600;
+        background-color: #9718c9;
+        cursor: pointer;
+        &:hover {
+          background-color: #9718c9db;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    .login_form {
+        padding: 50px 30px 40px 30px;
+      .group {
+        .button {
+          width: $width;
+          color: white;
+          display: $display;
+          height: 40px;
+          border: none;
+          border-radius: 5px;
+          font-size: 12px;
+          font-weight: 600;
+          background-color: #9718c9;
+          cursor: pointer;
+          &:hover {
+            background-color: #9718c9db;
+          }
+        }
+      }
+    }
+  }
+}

@@ -29,10 +29,10 @@ export function AuthContextProvider({ children }) {
     const result = await client.post("/email", {
       email,
       url,
-    })
+    });
     // Message confirming mail sent
     setSentMail(result.data.msg);
-  }
+  };
 
   const signup = async (username, email, password, confirmPassword, url) => {
     try {
@@ -79,20 +79,42 @@ export function AuthContextProvider({ children }) {
 
   const login = async (email, password, captchaToken) => {
     try {
-        const response = await client.post("/auth/login", {
-          email,
-          password,
-          captchaToken,
-        });
-        // we save the token to local storage
-        saveToken(response.data.token);
-        // setting the user
-        if (response.status === 200) {
-          getUser();
-          navigate("/");
-        }
+      const response = await client.post("/auth/login", {
+        email,
+        password,
+        captchaToken,
+      });
+      // we save the token to local storage
+      saveToken(response.data.token);
+      // setting the user
+      if (response.status === 200) {
+        getUser();
+        navigate("/");
+      }
     } catch (error) {
       setLoginError(error.response.data.message);
+    }
+  };
+
+  const resetEmail = async (email, url) => {
+    const result = await client.post("/email/reset", {
+      email,
+      url,
+    });
+    // Message confirming mail sent
+    setSentMail(result.data.msg);
+  };
+
+  const resetPass = async (password, confirmPassword, id, token) => {
+    const result = await client.post(`/email/${id}/${token}`, {
+      password,
+      confirmPassword,
+    });
+    console.log(result)
+    if (result.status === 200) {
+      // Message confirming password changed
+      setSentMail(result.data.msg);
+      navigate("/login-signup");
     }
   };
 
@@ -111,11 +133,11 @@ export function AuthContextProvider({ children }) {
   const verifyEmail = async (id) => {
     try {
       const response = await client.get(`/email/confirm/${id}`);
-      console.log(response)
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const logout = () => {
     deleteToken();
@@ -144,6 +166,8 @@ export function AuthContextProvider({ children }) {
     /* tokenGoogle, */
     login,
     logout,
+    resetEmail,
+    resetPass,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

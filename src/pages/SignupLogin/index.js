@@ -84,7 +84,7 @@ export function SignupLogin() {
         </div>
         {loginError && <Alert  type="error" message={loginError}/>}
         {signupError && <Alert  type="error" message={signupError}/>}
-        <ul className={styles.wrapper}>
+        <ul className={styles.wrapper} style={{marginTop: (loginError === true) | (signupError === true) ?  '60px' : '0'}}>
           {/* <li className={`${styles.icon} ${styles.facebook}`}>
             <span className={styles.tooltip}>Facebook</span>
             <span>

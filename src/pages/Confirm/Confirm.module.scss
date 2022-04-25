@@ -2,6 +2,12 @@ $boxShadow: 0px 0px 15px 5px rgba(60, 0, 40, 0.6);
 $space: 40px;
 $center: center;
 
+.confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
 .page {
   display: flex;
   flex-direction: column;
@@ -10,7 +16,8 @@ $center: center;
   gap: $space;
   -webkit-box-shadow: $boxShadow;
   box-shadow: $boxShadow;
-  min-height: $space*10;
+  min-height: $space * 10;
+  padding: $space;
 }
 .join {
   color: rgb(156, 14, 156);
