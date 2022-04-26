@@ -27,7 +27,7 @@ export function AnimeComponent({ id, type }) {
 
   const animeMainInfo = (
     <>
-      <div className="container">
+      <div className={styles.container}>
         <br />
         <div className={styles.anime}>
           <Link to={`/anime/${anime.id}`} className={styles.anime_Link}>
@@ -67,7 +67,7 @@ export function AnimeComponent({ id, type }) {
   const handleRender = () => {
     if (loading) {
       <Spinner />;
-    } else if (type === "tiny") {
+    } else if (type === "medium" || type === "small") {
       return animeMainInfo;
     } else {
       return [animeMainInfo, animeExtraInfo];
