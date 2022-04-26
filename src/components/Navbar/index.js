@@ -1,4 +1,4 @@
-import styles from "./Navbar.module.css";
+import styles from "./Navbar.module.scss";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context";

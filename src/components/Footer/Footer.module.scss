@@ -1,4 +1,15 @@
 .footer {
     background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);;
     padding: 20px;
+    p {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+    }
 }

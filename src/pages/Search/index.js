@@ -2,7 +2,7 @@ import { client } from "client";
 import { ListAnime, Spinner } from "components";
 import { SearchBar } from "components/SearchBar";
 import { useEffect, useState } from "react";
-import styles from "./Search.module.css";
+import styles from "./Search.module.scss";
 
 export function Search() {
   const [anime, setAnime] = useState([]);

@@ -1,7 +1,7 @@
 import { Profiles } from "components/Profiles";
 import { AuthContext } from "../../context";
-import { useContext, useEffect } from "react";
-import styles from "./Profile.module.css";
+import { useContext } from "react";
+import styles from "./Profile.module.scss";
 
 export function Profile() {
   const { user } = useContext(AuthContext);

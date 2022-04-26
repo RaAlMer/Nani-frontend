@@ -1,10 +1,9 @@
 import { client } from "../../client";
 import { useState } from "react";
+import styles from "./AnimeDropdown.module.scss";
 
 export function AnimeDropdown({ addWatched, addWatching, addPlanToWatch, id }) {
   const [show, setShow] = useState(false);
-
-  
 
   return (
     <div>

@@ -19,9 +19,9 @@ export function AuthContextProvider({ children }) {
 
   useEffect(() => {
     if (user) {
-    socket?.emit("newUser", user?._id)
+      socket?.emit("newUser", user?._id);
     }
-  }, [socket, user])
+  }, [socket, user]);
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -122,7 +122,7 @@ export function AuthContextProvider({ children }) {
       password,
       confirmPassword,
     });
-    console.log(result)
+    console.log(result);
     if (result.status === 200) {
       // Message confirming password changed
       setSentMail(result.data.msg);

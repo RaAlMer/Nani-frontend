@@ -1,20 +1,18 @@
 .followCounters {
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
 }
-
 .lists {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: left;
-    list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  list-style: none;
 }
-
 .lists > li {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   position: relative;
@@ -23,7 +21,6 @@
   max-width: 284px;
   padding: 10px;
 }
-
 .lists > li > p {
   text-decoration: none;
   bottom: 0px;
@@ -33,12 +30,10 @@
   height: 20px;
   font-size: 20px;
 }
-
 .editProfile {
   display: flex;
   flex-direction: column;
-}
-
-.editProfile button {
-  width: 50%;
+  button {
+    width: 50%;
+  }
 }

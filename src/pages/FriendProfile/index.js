@@ -2,6 +2,7 @@ import { client } from "client";
 import { Profiles } from "components/Profiles";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from "./FriendProfile.module.scss";
 
 export function FriendProfile() {
   const { friendId } = useParams();

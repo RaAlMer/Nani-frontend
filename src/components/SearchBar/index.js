@@ -9,18 +9,18 @@ export function SearchBar({ search, setSearch, setResults, searchBarInput }) {
   const getSearchResult = async () => {
     const item = await client.get(`/${searchBarInput}/search/${search}`);
     const result = item.data;
-    if (result.length === 0){
+    if (result.length === 0) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
       setResults(result);
     }
   };
-  const handleKeypress = e => {
-  if (e.charCode === 13) {
-    getSearchResult();
-  }
-};
+  const handleKeypress = (e) => {
+    if (e.charCode === 13) {
+      getSearchResult();
+    }
+  };
 
   return (
     <div>

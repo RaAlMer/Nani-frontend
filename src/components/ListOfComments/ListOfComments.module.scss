@@ -1,0 +1,14 @@
+$margin: 20px;
+.comments {
+  margin-top: $margin;
+  .comments_title {
+    font-size: 30px;
+    margin-bottom: $margin;
+  }
+  .comments_form_title {
+    font-size: 22px;
+  }
+  .comments_container {
+    margin-top: 2 * $margin;
+  }
+}

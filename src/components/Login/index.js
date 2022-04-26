@@ -50,7 +50,7 @@ export function Login() {
       <div className={styles.hr}></div>
       <div className={styles.captcha}>
         <ReCAPTCHA
-          sitekey="6LfvUZYfAAAAAG3JRIpBf5Isk78Msn948ZW-XZSv"
+          sitekey={process.env.REACT_APP_CAPTCHA_CLIENT_KEY}
           ref={recaptchaRef}
         />
       </div>

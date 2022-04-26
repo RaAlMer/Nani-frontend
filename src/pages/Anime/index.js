@@ -1,4 +1,4 @@
-import styles from "./Anime.module.css";
+import styles from "./Anime.module.scss";
 import { AnimeComponent, ListOfComments, CommentForm } from "../../components";
 import { useParams } from "react-router-dom";
 import { AnimeDropdown } from "components/AnimeDropdown";
@@ -6,7 +6,6 @@ import { useContext, useEffect, useState } from "react";
 import { client } from "client";
 import { Alert } from "../../components";
 import { AuthContext } from "context";
-import "./index.css"
 
 export function Anime() {
   const { user } = useContext(AuthContext);
@@ -60,7 +59,10 @@ export function Anime() {
           </Alert>
         )}
         <br />
-        <ListOfComments currentUserId={user ? user._id : null} animeId={animeId} />
+        <ListOfComments
+          currentUserId={user ? user._id : null}
+          animeId={animeId}
+        />
       </div>
     </>
   );

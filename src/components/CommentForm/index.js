@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./CommentForm.module.scss";
 
 export function CommentForm({
   submitLabel,
@@ -17,13 +18,13 @@ export function CommentForm({
   return (
     <form onSubmit={onSubmit}>
       <textarea
-        className="comment-form-textarea"
+        className={styles.comment_form_textarea}
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Write a comment..."
       />
       <button
-        className="comment-form-button"
+        className={styles.comment_form_button}
         type="submit"
         disabled={isTextareaDisabled}
       >
@@ -32,7 +33,7 @@ export function CommentForm({
       {hasCancelButton && (
         <button
           type="button"
-          className="comment-form-button comment-form-cancel-button"
+          className={`${styles.comment_form_button} ${styles.comment_form_cancel_button}`}
           onClick={handleCancel}
         >
           Cancel

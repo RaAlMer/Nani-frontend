@@ -1,6 +1,6 @@
 import { client } from "../../client";
 import { useState, useEffect } from "react";
-import styles from "./SearchFriend.module.css";
+import styles from "./SearchFriend.module.scss";
 import { Link } from "react-router-dom";
 import { SearchBar } from "components/SearchBar";
 

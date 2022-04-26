@@ -2,7 +2,7 @@ import { client } from "client";
 import { ListAnime, Spinner } from "components";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context";
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
 
 export function Home() {
   const { user } = useContext(AuthContext);

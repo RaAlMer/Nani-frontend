@@ -1,6 +1,7 @@
 import { CommentForm } from "components";
 import { AuthContext } from "context";
 import { useContext, useState } from "react";
+import styles from "./Comment.module.scss";
 
 export function Comment({
   comment,
@@ -41,16 +42,16 @@ export function Comment({
   };
 
   return (
-    <div key={comment.id} className="comment">
-      <div className="comment-image-container">
+    <div key={comment.id} className={styles.comment}>
+      <div className={styles.comment_image_container}>
         <img src={comment.author.image} alt="#" width="40" />
       </div>
-      <div className="comment-right-part">
-        <div className="comment-content">
-          <div className="comment-author">{comment.author.username}</div>
+      <div className={styles.comment_right_part}>
+        <div className={styles.comment_content}>
+          <div className={styles.comment_author}>{comment.author.username}</div>
           <div>{createdAt}</div>
         </div>
-        {!isEditing && <div className="comment-text">{comment.content}</div>}
+        {!isEditing && <div className={styles.comment_text}>{comment.content}</div>}
         {isEditing && (
           <CommentForm
             submitLabel="Update"
@@ -60,10 +61,10 @@ export function Comment({
             handleCancel={() => setActiveComment(null)}
           />
         )}
-        <div className="comment-actions">
+        <div className={styles.comment_actions}>
           {canReply && (
             <div
-              className="comment-action"
+              className={styles.comment_action}
               onClick={() => 
                 setActiveComment({ id: comment.id, type: "replying" })
               }
@@ -73,7 +74,7 @@ export function Comment({
           )}
           {canEdit && (
             <div
-              className="comment-action"
+              className={styles.comment_actions}
               onClick={() => {
                 setActiveComment({ id: comment.id, type: "editing" });
                 setIsEdited(true);
@@ -84,7 +85,7 @@ export function Comment({
           )}
           {canDelete && (
             <div
-              className="comment-action"
+              className={styles.comment_actions}
               onClick={() => deleteComment(comment.id)}
             >
               Delete
@@ -99,7 +100,7 @@ export function Comment({
           />
         )}
         {replies.length > 0 && (
-          <div className="replies">
+          <div className={styles.replies}>
             {replies.map((reply) => (
               <Comment
                 key={reply.id}

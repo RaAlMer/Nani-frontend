@@ -1,6 +1,7 @@
 import { client } from "client";
 import { CommentForm, Comment } from "components";
 import { useEffect, useState } from "react";
+import styles from "./ListOfComments.module.scss";
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -88,11 +89,11 @@ export function ListOfComments({ currentUserId, animeId }) {
   }, []);
 
   return (
-    <div className="comments">
-      <h3 className="comments-title">Comments</h3>
-      <div className="comment-form-title">Write comment</div>
+    <div className={styles.comments}>
+      <h3 className={styles.comments_title}>Comments</h3>
+      <div className={styles.comments_form_title}>Write comment</div>
       <CommentForm submitLabel="Write" handleSubmit={addComment} />
-      <div className="comments-container">
+      <div className={styles.comments_container}>
         {rootComments.map((rootComment) => (
           <Comment
             key={rootComment.id}

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import styles from "./App.module.css";
+import styles from "./App.module.scss";
 import { Footer, Navbar } from "./components";
 
 function App() {

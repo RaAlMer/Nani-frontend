@@ -1,4 +1,4 @@
-import styles from "./Anime.module.css";
+import styles from "./Anime.module.scss";
 import { client } from "../../client";
 import { useEffect, useState } from "react";
 import { Spinner } from "components";
@@ -31,11 +31,11 @@ export function AnimeComponent({ id, type }) {
         <br />
         <div className={styles.anime}>
           <Link to={`/anime/${anime.id}`} className={styles.anime_Link}>
-          <img
-            src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
-            alt=""
-          />
-          <h1 id="title">{anime.attributes.canonicalTitle}</h1>
+            <img
+              src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
+              alt=""
+            />
+            <h1 id="title">{anime.attributes.canonicalTitle}</h1>
           </Link>
         </div>
       </div>

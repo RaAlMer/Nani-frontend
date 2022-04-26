@@ -26,7 +26,9 @@ export function Confirm() {
         <div className={styles.page}>
           <p className={styles.join}>Thanks for joining</p>
           <h1>Your registration is complete.</h1>
-          <Link to="/login-signup" className={styles.btn}>Go to login page</Link>
+          <Link to="/login-signup" className={styles.btn}>
+            Go to login page
+          </Link>
         </div>
       )}
     </div>
