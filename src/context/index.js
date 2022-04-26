@@ -23,6 +23,15 @@ export function AuthContextProvider({ children }) {
     }
   }, [socket, user])
 
+  const handleNotification = (type, parentAuthorId, url) => {
+    socket.emit("sendNotification", {
+      senderId: user._id,
+      receiverId: parentAuthorId,
+      type,
+      url
+    });
+  };
+
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
   };
@@ -166,6 +175,7 @@ export function AuthContextProvider({ children }) {
 
   const value = {
     socket,
+    handleNotification,
     user,
     getUser,
     setUser,

@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import styles from "./profile.module.css";
 import { AiFillEdit, AiFillFileImage } from "react-icons/ai";
 
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 export function Profiles({ owner, followFriend }) {
   const [edit, setEdit] = useState(false);
   const [newUsername, setUsername] = useState(owner.username);
   const [imageUrl, setImageUrl] = useState();
-  const { user, getUser } = useContext(AuthContext);
+  const { user, getUser, handleNotification } = useContext(AuthContext);
   const [canSave, setCanSave] = useState(false);
 
   const handleSave = async () => {
@@ -29,40 +29,44 @@ export function Profiles({ owner, followFriend }) {
 
   const handleEditImg = async () => {
     const { value: file } = await Swal.fire({
-      title: 'Select image',
-      input: 'file',
+      title: "Select image",
+      input: "file",
       inputAttributes: {
-        'accept': 'image/*',
-        'aria-label': 'Upload your profile picture'
-      }
-    })
+        accept: "image/*",
+        "aria-label": "Upload your profile picture",
+      },
+    });
     if (file) {
       setCanSave(false);
       handleFileUpload(file);
     }
-  }
+  };
 
   const handleEdit = () => {
     setEdit(true);
-  }
+  };
 
   const handleCancel = () => {
     setEdit(false);
   };
 
   const uploadImage = (file) => {
-    return client.post(`/auth/upload`, file)
-      .then(res => res.data)
-      .catch((err) => console.log(err))
-  }
+    return client
+      .post(`/auth/upload`, file)
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+  };
 
   const handleFileUpload = async (image) => {
-    const file = new FormData()
-    file.append("image", image)
+    const file = new FormData();
+    file.append("image", image);
     uploadImage(file)
-      .then(response => {setImageUrl(response.path); setCanSave(true)})
-      .catch(err => console.log("Error while uploading the file: ", err))
-  }
+      .then((response) => {
+        setImageUrl(response.path);
+        setCanSave(true);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
 
   const watchedList = owner.watched.map((item) => {
     return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
@@ -78,14 +82,18 @@ export function Profiles({ owner, followFriend }) {
     <div>
       {edit ? (
         <div>
-          <button onClick={handleSave} disabled={!canSave}>Save</button>
+          <button onClick={handleSave} disabled={!canSave}>
+            Save
+          </button>
           <button onClick={handleCancel}>Cancel</button>
         </div>
       ) : (
         <div>
           {owner._id === user._id && (
             <>
-              <button onClick={handleEdit}><AiFillEdit/></button>
+              <button onClick={handleEdit}>
+                <AiFillEdit />
+              </button>
               {/* <button onClick={handleDelete}>Delete</button> */}
             </>
           )}
@@ -93,20 +101,35 @@ export function Profiles({ owner, followFriend }) {
       )}
       {edit ? (
         <div className={styles.editProfile}>
-          <button onClick={handleEditImg}><AiFillFileImage/>Upload</button>
+          <button onClick={handleEditImg}>
+            <AiFillFileImage />
+            Upload
+          </button>
           <input
             value={newUsername}
-            onChange={(event) => {setUsername(event.target.value); setCanSave(true)}}
+            onChange={(event) => {
+              setUsername(event.target.value);
+              setCanSave(true);
+            }}
           />
         </div>
       ) : (
         <div>
-          <img src={owner.image} alt="profilePic" width="100"/>
+          <img src={owner.image} alt="profilePic" width="100" />
           <h1>{owner.username}</h1>
           {/* If the id from the user is different from the id of the profile, it will show the Follow button */}
           {owner._id !== user._id && (
-            <button onClick={followFriend}>
-              {owner.followers.find((follower) => follower === user._id) ? "Unfollow" : "Follow"}
+            <button
+              onClick={() => {
+                followFriend();
+                handleNotification(owner.followers.find((follower) => follower === user._id)
+                ? "unfollowed you"
+                : "followed you", owner._id, `/profile/${user._id}`)
+              }}
+            >
+              {owner.followers.find((follower) => follower === user._id)
+                ? "Unfollow"
+                : "Follow"}
             </button>
           )}
         </div>

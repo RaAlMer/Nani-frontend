@@ -12,9 +12,10 @@ nav {
   background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: relative;
+  padding: 0 0 0 40vw;
 }
 .counter {
   width: 15px;
@@ -31,6 +32,8 @@ nav {
   right: -5px;
 }
 .notifications{
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 50px;
   right: 0px;
@@ -38,6 +41,10 @@ nav {
   color:black;
   font-weight: 300;
   padding: 10px;
+}
+.group {
+  display: flex;
+  flex-direction: row;
 }
 .items {
   margin-right: 20px;
@@ -52,6 +59,22 @@ nav {
   font-weight: 500;
 }
 .items a:hover {
+  color: #2c0db9;
+}
+.profile {
+  margin-right: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  color: #f1f1f1;
+}
+.profile a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+.profile a:hover {
   color: #2c0db9;
 }
 nav input[type="checkbox"],
@@ -75,6 +98,16 @@ nav .hamburger {
     text-align: center;
     margin-right: 0px;
     padding: 20px 0;
+  }
+  .profile {
+    width: 100%;
+    text-align: center;
+    margin-right: 20px;
+    padding: 20px 0;
+  }
+  .counter {
+    top: 10px;
+    right: -5px;
   }
   nav input[type="checkbox"],
   nav .hamburger {

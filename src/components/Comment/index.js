@@ -30,15 +30,8 @@ export function Comment({
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
   const [isEdited, setIsEdited] = useState(false);
-  const { user, socket } = useContext(AuthContext);
+  const { user, socket, handleNotification } = useContext(AuthContext);
 
-  const handleNotification = (type, parentAuthorId) => {
-    socket.emit("sendNotification", {
-      senderId: user._id,
-      receiverId: parentAuthorId,
-      type,
-    });
-  };
 
   return (
     <div key={comment.id} className="comment">
@@ -64,7 +57,7 @@ export function Comment({
           {canReply && (
             <div
               className="comment-action"
-              onClick={() => 
+              onClick={() =>
                 setActiveComment({ id: comment.id, type: "replying" })
               }
             >
@@ -95,7 +88,14 @@ export function Comment({
         {isReplying && (
           <CommentForm
             submitLabel="Reply"
-            handleSubmit={(text) => {addComment(text, replyId); handleNotification("replied", comment.author._id)}}
+            handleSubmit={(text) => {
+              addComment(text, replyId);
+              handleNotification(
+                "replied to your comment",
+                comment.author._id,
+                window.location.pathname
+              );
+            }}
           />
         )}
         {replies.length > 0 && (
