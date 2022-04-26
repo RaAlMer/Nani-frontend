@@ -1,5 +1,5 @@
 import { client } from "client";
-import { ListAnime, Spinner } from "components";
+import { AnimeComponent, ListAnime, Spinner } from "components";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context";
 import styles from "./Home.module.scss";
@@ -8,6 +8,7 @@ export function Home() {
   const { user } = useContext(AuthContext);
   const [anime, setAnime] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const getAnime = async () => {
     const item = await client.get(`/anime/home`);
@@ -18,16 +19,39 @@ export function Home() {
 
   useEffect(() => {
     getAnime();
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", changeWidth);
+    return () => {
+      window.removeEventListener("resize", changeWidth);
+    };
   }, []);
+
+  const watchingList = user?.watching.map((item) => {
+    return <AnimeComponent key={item.id} id={item.id} type="medium" />;
+  });
 
   return (
     <div>
-      <h1>Homepage</h1>
       <div>
         {loading ? (
           <Spinner />
         ) : (
-          <ListAnime anime={anime} />
+          <>
+            {(screenWidth > 425 || user.watching.length === 0) && (
+              <>
+                <h1>Trending</h1>
+                <ListAnime anime={anime} />
+              </>
+            )}
+            {user.watching.length > 0 && (
+              <>
+                <h1>Watching</h1>
+                {watchingList}
+              </>
+            )}
+          </>
         )}
       </div>
     </div>

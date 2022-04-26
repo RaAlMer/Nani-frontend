@@ -20,3 +20,25 @@
 .anime_Link > img {
   width: 120px;
 }
+@media screen and (max-width: 425px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+  }
+  .anime {
+    width: 100%;
+    height: auto;
+  }
+  .anime_Link {
+    width: 100%;
+  }
+
+  .anime_Link img {
+    width: 100%;
+  }
+  .anime h1 {
+    font-size: 6em;
+  }
+}

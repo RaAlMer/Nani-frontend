@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context";
 import { client } from "client";
+import { BsBellFill } from "react-icons/bs";
 
 export function Navbar() {
   const { logout, user, socket } = useContext(AuthContext);
@@ -27,13 +28,13 @@ export function Navbar() {
     setSenderName(item.data);
   };
 
-  const displayNotifications = ({ senderId, type }) => {
+  const displayNotifications = ({ senderId, type, url }) => {
     getSenderName(senderId);
     if (senderName !== "") {
       return (
-        <span
+        <Link to={url}
           className={styles.notification}
-        >{`${senderName} ${type} your comment`}</span>
+        >{`${senderName} ${type}`}</Link>
       );
     }
   };
@@ -50,9 +51,9 @@ export function Navbar() {
 
   return (
     <nav>
-      {(showDropdown || screenWidth > 768) && (
-        <>
-          <ul className={styles.navbar}>
+      <ul className={styles.navbar}>
+        {(showDropdown || screenWidth > 768) && (
+          <div className={styles.group}>
             <li className={styles.items}>
               <Link to="/">Home</Link>
             </li>
@@ -61,18 +62,7 @@ export function Navbar() {
                 <Link to="/login-signup">Login/Signup</Link>
               </li>
             )}
-            {user && (
-              <li
-                className={styles.items}
-                onMouseEnter={() => setShowNotificationPanel(true)}
-                onMouseLeave={() => setShowNotificationPanel(false)}
-              >
-                <Link to="/profile">{user.username}</Link>
-                {notifications.length > 0 && (
-                  <div className={styles.counter}>{notifications.length}</div>
-                )}
-              </li>
-            )}
+
             {user && (
               <li className={styles.items}>
                 <Link to="/friends">Friends</Link>
@@ -83,20 +73,39 @@ export function Navbar() {
                 <Link to="/search">Anime</Link>
               </li>
             )}
-            {user && (
-              <li className={styles.items}>
-                <button onClick={logout}>Logout</button>
-              </li>
-            )}
-          </ul>
-          {showNotificationPanel && (
-            <div className={styles.notifications}>
-              {notifications.length > 0 &&
-                notifications.map((n) => displayNotifications(n))}
-            </div>
+          </div>
+        )}
+        <div className={styles.group}>
+          {user && (
+            <li
+              className={styles.profile}
+              onClick={() => setShowNotificationPanel(!showNotificationPanel)}
+            >
+              <BsBellFill />
+              {notifications.length > 0 && (
+                <div className={styles.counter}>{notifications.length}</div>
+              )}
+            </li>
           )}
-        </>
+          {user && (
+            <li className={styles.profile}>
+              <Link to="/profile">{user.username}</Link>
+            </li>
+          )}
+          {user && (
+            <li className={styles.profile}>
+              <button onClick={logout}>Logout</button>
+            </li>
+          )}
+        </div>
+      </ul>
+      {showNotificationPanel && (
+        <div className={styles.notifications}>
+          {notifications.length > 0 &&
+            notifications.map((n) => displayNotifications(n))}
+        </div>
       )}
+
       <input
         type={"checkbox"}
         className={styles.navToggle}

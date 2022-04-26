@@ -13,7 +13,7 @@ export function Profiles({ owner, followFriend }) {
   const [edit, setEdit] = useState(false);
   const [newUsername, setUsername] = useState(owner.username);
   const [imageUrl, setImageUrl] = useState();
-  const { user, getUser } = useContext(AuthContext);
+  const { user, getUser, handleNotification } = useContext(AuthContext);
   const [canSave, setCanSave] = useState(false);
 
   const handleSave = async () => {
@@ -119,7 +119,18 @@ export function Profiles({ owner, followFriend }) {
           <h1>{owner.username}</h1>
           {/* If the id from the user is different from the id of the profile, it will show the Follow button */}
           {owner._id !== user._id && (
-            <button onClick={followFriend}>
+            <button
+              onClick={() => {
+                followFriend();
+                handleNotification(
+                  owner.followers.find((follower) => follower === user._id)
+                    ? "unfollowed you"
+                    : "followed you",
+                  owner._id,
+                  `/profile/${user._id}`
+                );
+              }}
+            >
               {owner.followers.find((follower) => follower === user._id)
                 ? "Unfollow"
                 : "Follow"}

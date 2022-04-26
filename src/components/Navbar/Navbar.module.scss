@@ -6,6 +6,7 @@ nav {
   height: 50px;
   background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
   z-index: 12;
+<<<<<<< HEAD:src/components/Navbar/Navbar.module.scss
   .navbar {
     list-style-type: none;
     background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
@@ -30,6 +31,18 @@ nav {
       }
     }
   }
+=======
+}
+.navbar {
+  list-style-type: none;
+  background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0 0 0 40vw;
+>>>>>>> Gonçalo:src/components/Navbar/Navbar.module.css
 }
 .counter {
   width: 15px;
@@ -45,7 +58,13 @@ nav {
   top: -5px;
   right: -5px;
 }
+<<<<<<< HEAD:src/components/Navbar/Navbar.module.scss
 .notifications {
+=======
+.notifications{
+  display: flex;
+  flex-direction: column;
+>>>>>>> Gonçalo:src/components/Navbar/Navbar.module.css
   position: absolute;
   top: 50px;
   right: 0px;
@@ -54,7 +73,45 @@ nav {
   font-weight: 300;
   padding: 10px;
 }
+<<<<<<< HEAD:src/components/Navbar/Navbar.module.scss
 
+=======
+.group {
+  display: flex;
+  flex-direction: row;
+}
+.items {
+  margin-right: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+}
+.items a {
+  text-decoration: none;
+  color: #f1f1f1;
+  font-weight: 500;
+}
+.items a:hover {
+  color: #2c0db9;
+}
+.profile {
+  margin-right: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  color: #f1f1f1;
+}
+.profile a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+.profile a:hover {
+  color: #2c0db9;
+}
+>>>>>>> Gonçalo:src/components/Navbar/Navbar.module.css
 nav input[type="checkbox"],
 nav .hamburger {
   display: none;
@@ -76,6 +133,16 @@ nav .hamburger {
       border-top: 1px solid rgba(255, 255, 255, 0.555);
       margin-top: 50px;
     }
+  }
+  .profile {
+    width: 100%;
+    text-align: center;
+    margin-right: 20px;
+    padding: 20px 0;
+  }
+  .counter {
+    top: 10px;
+    right: -5px;
   }
   nav input[type="checkbox"],
   nav .hamburger {
