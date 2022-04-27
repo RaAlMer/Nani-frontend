@@ -5,7 +5,7 @@ import { AuthContext } from "../../context";
 import styles from "./Home.module.scss";
 
 export function Home() {
-  const { user } = useContext(AuthContext);
+  const { user, getUser } = useContext(AuthContext);
   const [anime, setAnime] = useState([]);
   const [loading, setLoading] = useState(true);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -19,6 +19,7 @@ export function Home() {
 
   useEffect(() => {
     getAnime();
+    getUser();
     const changeWidth = () => {
       setScreenWidth(window.innerWidth);
     };
@@ -48,7 +49,7 @@ export function Home() {
             {user?.watching.length > 0 && (
               <>
                 <h1>Watching</h1>
-                {watchingList}
+                <div className={styles.list}>{watchingList}</div>
               </>
             )}
           </>

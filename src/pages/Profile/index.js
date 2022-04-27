@@ -4,7 +4,8 @@ import { useContext } from "react";
 import styles from "./Profile.module.scss";
 
 export function Profile() {
-  const { user } = useContext(AuthContext);
+  const { user, getUser } = useContext(AuthContext);
+  getUser();
 
   return <>{user && <Profiles owner={user} />}</>
 }

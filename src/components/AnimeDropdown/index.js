@@ -1,4 +1,3 @@
-import { client } from "../../client";
 import { useState } from "react";
 import styles from "./AnimeDropdown.module.scss";
 
