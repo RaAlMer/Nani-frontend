@@ -69,13 +69,13 @@ export function Profiles({ owner, followFriend }) {
   };
 
   const watchedList = owner.watched.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
+    return <AnimeComponent key={item.id} id={item.id} type="small" />;
   });
   const watchingList = owner.watching.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
+    return <AnimeComponent key={item.id} id={item.id} type="small" />;
   });
   const planToWatchList = owner.planToWatch.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="tiny" />;
+    return <AnimeComponent key={item.id} id={item.id} type="small" />;
   });
 
   return (

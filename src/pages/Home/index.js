@@ -39,13 +39,13 @@ export function Home() {
           <Spinner />
         ) : (
           <>
-            {(screenWidth > 425 || user.watching.length === 0) && (
+            {(screenWidth > 425 || user?.watching.length === 0) && (
               <>
                 <h1>Trending</h1>
                 <ListAnime anime={anime} />
               </>
             )}
-            {user.watching.length > 0 && (
+            {user?.watching.length > 0 && (
               <>
                 <h1>Watching</h1>
                 {watchingList}

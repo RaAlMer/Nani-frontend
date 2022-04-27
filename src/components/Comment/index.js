@@ -33,7 +33,6 @@ export function Comment({
   const [isEdited, setIsEdited] = useState(false);
   const { user, socket, handleNotification } = useContext(AuthContext);
 
-
   return (
     <div key={comment.id} className={styles.comment}>
       <div className={styles.comment_image_container}>
@@ -44,7 +43,9 @@ export function Comment({
           <div className={styles.comment_author}>{comment.author.username}</div>
           <div>{createdAt}</div>
         </div>
-        {!isEditing && <div className={styles.comment_text}>{comment.content}</div>}
+        {!isEditing && (
+          <div className={styles.comment_text}>{comment.content}</div>
+        )}
         {isEditing && (
           <CommentForm
             submitLabel="Update"
@@ -58,7 +59,7 @@ export function Comment({
           {canReply && (
             <div
               className={styles.comment_action}
-              onClick={() => 
+              onClick={() =>
                 setActiveComment({ id: comment.id, type: "replying" })
               }
             >
@@ -91,11 +92,12 @@ export function Comment({
             submitLabel="Reply"
             handleSubmit={(text) => {
               addComment(text, replyId);
-              handleNotification(
-                "replied to your comment",
-                comment.author._id,
-                window.location.pathname
-              );
+                comment.author._id !== user._id &&
+                  handleNotification(
+                    "replied to your comment",
+                    comment.author._id,
+                    window.location.pathname
+                  );
             }}
           />
         )}

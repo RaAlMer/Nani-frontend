@@ -47,7 +47,7 @@ export function Anime() {
     <>
       <div>
         <h1>Anime</h1>
-        <AnimeComponent id={animeId} type="small" />
+        <AnimeComponent id={animeId} type="large" />
         <AnimeDropdown
           addWatched={addWatched}
           addWatching={addWatching}
