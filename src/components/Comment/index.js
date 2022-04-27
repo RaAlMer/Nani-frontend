@@ -68,7 +68,7 @@ export function Comment({
           )}
           {canEdit && (
             <div
-              className={styles.comment_actions}
+              className={styles.comment_action}
               onClick={() => {
                 setActiveComment({ id: comment.id, type: "editing" });
                 setIsEdited(true);
@@ -79,7 +79,7 @@ export function Comment({
           )}
           {canDelete && (
             <div
-              className={styles.comment_actions}
+              className={styles.comment_action}
               onClick={() => deleteComment(comment.id)}
             >
               Delete
