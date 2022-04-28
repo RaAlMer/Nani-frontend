@@ -2,7 +2,7 @@ import styles from "./ListAnime.module.scss";
 import { AnimeComponent } from "components/AnimeComponent";
 import { useEffect, useState } from "react";
 
-export function ListAnime({ anime }) {
+export function ListAnime({ anime, type }) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -22,12 +22,12 @@ export function ListAnime({ anime }) {
           <div key={item.id}>
             {screenWidth > 425 ? (
               screenWidth > 768 ? (
-                <AnimeComponent id={item.id} type="small" />
+                <AnimeComponent id={item.id} type={type} />
               ) : (
-                <AnimeComponent id={item.id} type="small" />
+                <AnimeComponent id={item.id} type={type} />
               )
             ) : (
-              <AnimeComponent id={item.id} type="medium" />
+              <AnimeComponent id={item.id} type="large" />
             )}
           </div>
         );

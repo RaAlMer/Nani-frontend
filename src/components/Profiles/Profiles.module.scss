@@ -2,9 +2,10 @@
   display: flex;
   gap: 10px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 10px;
+  font-style: none;
 }
 .lists {
   display: flex;
