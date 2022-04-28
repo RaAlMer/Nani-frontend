@@ -153,15 +153,15 @@ export function Profiles({ owner, followFriend }) {
         <li>
           <p>Watched</p>
         </li>
-        <ul className={styles.lists}>{watchedList}</ul>
+        <ul className={styles.lists_inside}>{watchedList}</ul>
         <li>
           <p>Watching</p>
         </li>
-        <ul className={styles.lists}>{watchingList}</ul>
+        <ul className={styles.lists_inside}>{watchingList}</ul>
         <li>
           <p>Plan To Watch</p>
         </li>
-        <ul className={styles.lists}>{planToWatchList}</ul>
+        <ul className={styles.lists_inside}>{planToWatchList}</ul>
       </ul>
     </div>
   );
