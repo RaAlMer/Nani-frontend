@@ -14,7 +14,7 @@ export function Home() {
     const item = await client.get(`/anime/home`);
     const result = item.data;
     setAnime(result);
-    setLoading(false);
+    setLoading(false)
   };
 
   useEffect(() => {
@@ -40,18 +40,20 @@ export function Home() {
           <Spinner />
         ) : (
           <>
-            {(screenWidth > 425 || user?.watching.length === 0) && (
-              <>
-                <h1>Trending</h1>
-                <ListAnime anime={anime} />
-              </>
-            )}
-            {user?.watching.length > 0 && (
-              <>
-                <h1>Watching</h1>
-                <div className={styles.list}>{watchingList}</div>
-              </>
-            )}
+            <div className={styles.container}>
+              {user?.watching.length > 0 && (
+                <div className={styles.listContainer}>
+                  <h1>Watching</h1>
+                  <div className={styles.list}>{watchingList}</div>
+                </div>
+              )}
+              {(screenWidth > 425 || user?.watching.length === 0) && (
+                <div className={styles.trending}>
+                  <h1>Trending</h1>
+                  <ListAnime anime={anime} type="small"/>
+                </div>
+              )}
+            </div>
           </>
         )}
       </div>

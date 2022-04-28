@@ -36,7 +36,7 @@ export function Search() {
             searchBarInput="anime"
           />
           {search !== "" && results.length > 0 ? (
-            <ListAnime anime={results} />
+            <ListAnime anime={results} type="medium"/>
           ) : (
             <>
               {pageNumber > 1 ? (
@@ -55,7 +55,7 @@ export function Search() {
                   </button>
                 </div>
               )}
-              <ListAnime anime={anime} />
+              <ListAnime anime={anime} type="medium"/>
             </>
           )}
         </>

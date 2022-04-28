@@ -2,8 +2,12 @@
   display: flex;
   gap: 10px;
   flex-direction: row;
-  align-items: center;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
   margin-top: 10px;
+}
+.followCounters Link {
+  text-decoration: none;
 }
 .lists {
   display: flex;

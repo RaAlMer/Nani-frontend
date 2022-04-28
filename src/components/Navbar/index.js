@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context";
 import { client } from "client";
 import { BsBellFill } from "react-icons/bs";
+import logo from "./nani_logo.png";
 
 export function Navbar() {
   const { logout, user, socket } = useContext(AuthContext);
@@ -32,7 +33,8 @@ export function Navbar() {
     getSenderName(senderId);
     if (senderName !== "") {
       return (
-        <Link to={url}
+        <Link
+          to={url}
           className={styles.notification}
         >{`${senderName} ${type}`}</Link>
       );
@@ -52,11 +54,13 @@ export function Navbar() {
   return (
     <nav>
       <ul className={styles.navbar}>
+        <li className={styles.items}>
+          <Link to="/">
+            <img src={logo} alt="nani logo" width={100} />
+          </Link>
+        </li>
         {(showDropdown || screenWidth > 768) && (
           <div className={styles.group}>
-            <li className={styles.items}>
-              <Link to="/">Home</Link>
-            </li>
             {!user && (
               <li className={styles.items}>
                 <Link to="/login-signup">Login/Signup</Link>
