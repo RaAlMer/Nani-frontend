@@ -5,6 +5,9 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Profiles.module.scss";
 import { AiFillEdit, AiFillFileImage } from "react-icons/ai";
+import { FaTimes, FaPlay } from "react-icons/fa";
+import { BiTime } from "react-icons/bi";
+import { BsCheckLg } from "react-icons/bs";
 
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
@@ -68,14 +71,128 @@ export function Profiles({ owner, followFriend }) {
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
+  const addWatched = async (animeId) => {
+    try {
+      const item = await client.get(`/anime/addList/${animeId}/watched`);
+      if (item.status === 200) {
+        getUser();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const addWatching = async (animeId) => {
+    try {
+      const item = await client.get(`/anime/addList/${animeId}/watching`);
+      if (item.status === 200) {
+        getUser();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const addPlanToWatch = async (animeId) => {
+    try {
+      const item = await client.get(`/anime/addList/${animeId}/planToWatch`);
+      if (item.status === 200) {
+        getUser();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteFromLists = async (animeId) => {
+    try {
+      const item = await client.get(`/anime/deleteList/${animeId}`);
+      if (item.status === 200) {
+        getUser();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const watchedList = owner.watched.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="small" />;
+    return (
+      <div className={styles.list}>
+        <div className={styles.action_btn}>
+          <button
+            className={styles.addWatching}
+            onClick={() => addWatching(item.id)}
+          >
+            <FaPlay size={20} />
+          </button>
+          <button
+            className={styles.addPlanToWatch}
+            onClick={() => addPlanToWatch(item.id)}
+          >
+            <BiTime size={20} />
+          </button>
+          <button
+            className={styles.delete}
+            onClick={() => deleteFromLists(item.id)}
+          >
+            <FaTimes size={20} />
+          </button>
+        </div>
+        <AnimeComponent key={item.id} id={item.id} type="small" />
+      </div>
+    );
   });
   const watchingList = owner.watching.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="small" />;
+    return (
+      <div className={styles.list}>
+        <div className={styles.action_btn}>
+          <button
+            className={styles.addWatched}
+            onClick={() => addWatched(item.id)}
+          >
+            <BsCheckLg size={20} />
+          </button>
+          <button
+            className={styles.addPlanToWatch}
+            onClick={() => addPlanToWatch(item.id)}
+          >
+            <BiTime size={20} />
+          </button>
+          <button
+            className={styles.delete}
+            onClick={() => deleteFromLists(item.id)}
+          >
+            <FaTimes size={20} />
+          </button>
+        </div>
+        <AnimeComponent key={item.id} id={item.id} type="small" />
+      </div>
+    );
   });
   const planToWatchList = owner.planToWatch.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="small" />;
+    return (
+      <div className={styles.list}>
+        <div className={styles.action_btn}>
+          <button
+            className={styles.addWatched}
+            onClick={() => addWatched(item.id)}
+          >
+            <BsCheckLg size={20} />
+          </button>
+          <button
+            className={styles.addWatching}
+            onClick={() => addWatching(item.id)}
+          >
+            <FaPlay size={20} />
+          </button>
+          <button
+            className={styles.delete}
+            onClick={() => deleteFromLists(item.id)}
+          >
+            <FaTimes size={20} />
+          </button>
+        </div>
+        <AnimeComponent key={item.id} id={item.id} type="small" />
+      </div>
+    );
   });
 
   return (
