@@ -54,54 +54,122 @@ export function Navbar() {
   return (
     <nav>
       <ul className={styles.navbar}>
-        <li className={styles.items}>
-          <Link to="/">
-            <img src={logo} alt="nani logo" width={100} />
-          </Link>
-        </li>
-        {(showDropdown || screenWidth > 768) && (
-          <div className={styles.group}>
-            {!user && (
-              <li className={styles.items}>
-                <Link to="/login-signup">Login/Signup</Link>
+        {screenWidth > 768 ? (
+          // Desktop version
+          <>
+            <div className={styles.group_profile}>
+              <li className={styles.logo}>
+                <Link to="/">
+                  <img src={logo} alt="nani logo" width={100} />
+                </Link>
               </li>
-            )}
-
-            {user && (
-              <li className={styles.items}>
-                <Link to="/friends">Friends</Link>
-              </li>
-            )}
-            {user && (
-              <li className={styles.items}>
-                <Link to="/search">Anime</Link>
-              </li>
-            )}
-          </div>
-        )}
-        <div className={styles.group}>
-          {user && (
-            <li
-              className={styles.profile}
-              onClick={() => setShowNotificationPanel(!showNotificationPanel)}
-            >
-              <BsBellFill />
-              {notifications.length > 0 && (
-                <div className={styles.counter}>{notifications.length}</div>
+            </div>
+            <div className={styles.group}>
+              {!user && (
+                <li className={styles.items}>
+                  <Link to="/login-signup">Login/Signup</Link>
+                </li>
               )}
-            </li>
-          )}
-          {user && (
-            <li className={styles.profile}>
-              <Link to="/profile">{user.username}</Link>
-            </li>
-          )}
-          {user && (
-            <li className={styles.profile}>
-              <button onClick={logout}>Logout</button>
-            </li>
-          )}
-        </div>
+              {user && (
+                <li className={styles.items}>
+                  <Link to="/friends">Friends</Link>
+                </li>
+              )}
+              {user && (
+                <li className={styles.items}>
+                  <Link to="/search">Anime</Link>
+                </li>
+              )}
+            </div>
+            <div className={styles.group_profile}>
+              {user && (
+                <li
+                  className={styles.profile}
+                  onClick={() =>
+                    setShowNotificationPanel(!showNotificationPanel)
+                  }
+                >
+                  <BsBellFill />
+                  {notifications.length > 0 && (
+                    <div className={styles.counter}>{notifications.length}</div>
+                  )}
+                </li>
+              )}
+              {user && (
+                <li className={styles.profile}>
+                  <Link to="/profile">{user.username}</Link>
+                </li>
+              )}
+              {user && (
+                <li className={styles.profile}>
+                  <button onClick={logout}>Logout</button>
+                </li>
+              )}
+            </div>
+          </>
+        ) : (
+          // Tablet and mobile version
+          <>
+            <div className={styles.group_profile}>
+              <div>
+                <li className={styles.logo}>
+                  <Link to="/">
+                    <img src={logo} alt="nani logo" width={100} />
+                  </Link>
+                </li>
+              </div>
+              <div>
+                {user && (
+                  <li
+                    className={styles.profile}
+                    onClick={() =>
+                      setShowNotificationPanel(!showNotificationPanel)
+                    }
+                  >
+                    <BsBellFill />
+                    {notifications.length > 0 && (
+                      <div className={styles.counter}>
+                        {notifications.length}
+                      </div>
+                    )}
+                  </li>
+                )}
+                {user && (
+                  <li className={styles.profile}>
+                    <Link to="/profile">
+                      <img src={user.image} alt={user.image} />
+                    </Link>
+                  </li>
+                )}
+                {user && (
+                  <li className={styles.profile}>
+                    <button onClick={logout}>Logout</button>
+                  </li>
+                )}
+              </div>
+            </div>
+            {(showDropdown || screenWidth > 768) && (
+              <div className={styles.group}>
+                {!user && (
+                  <li className={styles.items}>
+                    <Link to="/login-signup">Login/Signup</Link>
+                  </li>
+                )}
+
+                {user && (
+                  <li className={styles.items}>
+                    <Link to="/friends">Friends</Link>
+                  </li>
+                )}
+                {user && (
+                  <li className={styles.items}>
+                    <Link to="/search">Anime</Link>
+                  </li>
+                )}
+              </div>
+            )}
+          </>
+        )}
       </ul>
       {showNotificationPanel && (
         <div className={styles.notifications}>

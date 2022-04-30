@@ -31,7 +31,6 @@ export function AnimeComponent({ id, type }) {
   const animeMainInfo = (
     <>
       <div className={styles.container}>
-        <br />
         <div
           className={cn({
             [styles.anime_tiny]: type === "tiny",
