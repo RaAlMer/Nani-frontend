@@ -13,10 +13,12 @@ export function AuthContextProvider({ children }) {
   const [sentMail, setSentMail] = useState(null);
   const [socket, setSocket] = useState(null);
 
+  // Code for LOCALHOST
   /* useEffect(() => {
     setSocket(io("http://localhost:5000"));
   }, []); */
 
+  // Code for NETLIFY and HEROKU
   useEffect(() => {
     setSocket(io("https://nani-app-iron.herokuapp.com"));
   }, []);
