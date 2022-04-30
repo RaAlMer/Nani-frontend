@@ -19,11 +19,13 @@ export function AnimeComponent({ id, type }) {
     const item = await client.get(`/anime/${id}`);
     const result = item.data;
     setAnime(result);
-    setLoading(false);
   };
 
   useEffect(() => {
     getAnime();
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
   /* const animeTiny = () */
@@ -60,13 +62,13 @@ export function AnimeComponent({ id, type }) {
     <div className={styles.main}>
       <h1 id="title">{anime.attributes.canonicalTitle}</h1>
       <div className={styles.container}>
-          <div className={styles.anime_large}>
-            <img
-              className={styles.anime_img_large}
-              src={`https://media.kitsu.io/anime/poster_images/${anime.id}/large.jpg`}
-              alt=""
-            />
-          </div>
+        <div className={styles.anime_large}>
+          <img
+            className={styles.anime_img_large}
+            src={`https://media.kitsu.io/anime/poster_images/${anime.id}/large.jpg`}
+            alt=""
+          />
+        </div>
         <div className={styles.synopsis}>
           <ul>
             <li>
@@ -76,12 +78,10 @@ export function AnimeComponent({ id, type }) {
               </div>
             </li>
             <li className={styles.animeDetails}>
-                <p id="subtype">{anime.attributes.subtype}</p>
-                <p id="status">{anime.attributes.status}</p>
-                <p id="ageRating">Rated: {anime.attributes.ageRating}</p>
-                <p id="episodeCount">
-                  Episodes: {anime.attributes.episodeCount}
-                </p>
+              <p id="subtype">{anime.attributes.subtype}</p>
+              <p id="status">{anime.attributes.status}</p>
+              <p id="ageRating">Rated: {anime.attributes.ageRating}</p>
+              <p id="episodeCount">Episodes: {anime.attributes.episodeCount}</p>
             </li>
           </ul>
           <h2 id="synopsisLabel">Synopsis</h2>
