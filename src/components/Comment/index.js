@@ -92,12 +92,12 @@ export function Comment({
             submitLabel="Reply"
             handleSubmit={(text) => {
               addComment(text, replyId);
-                comment.author._id !== user._id &&
-                  handleNotification(
-                    "replied to your comment",
-                    comment.author._id,
-                    window.location.pathname
-                  );
+              comment.author._id !== user._id &&
+                handleNotification(
+                  "replied to your comment",
+                  comment.author._id,
+                  window.location.pathname
+                );
             }}
           />
         )}
