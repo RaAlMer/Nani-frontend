@@ -14,7 +14,6 @@ export function AnimeComponent({ id, type }) {
     relationships: {},
   });
   const [loading, setLoading] = useState(true);
-
   const getAnime = async () => {
     const item = await client.get(`/anime/${id}`);
     const result = item.data;
@@ -42,17 +41,24 @@ export function AnimeComponent({ id, type }) {
           })}
         >
           <Link to={`/anime/${anime.id}`} className={styles.anime_Link}>
-            <img
-              className={cn({
-                [styles.anime_img_tiny]: type === "tiny",
-                [styles.anime_img_small]: type === "small",
-                [styles.anime_img_medium]: type === "medium",
-                [styles.anime_img_large]: type === "large",
-              })}
-              src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
-              alt=""
-            />
-            <h3 id="title">{anime.attributes.canonicalTitle}</h3>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <>
+                <img
+                  className={cn({
+                    [styles.anime_img_tiny]: type === "tiny",
+                    [styles.anime_img_small]: type === "small",
+                    [styles.anime_img_medium]: type === "medium",
+                    [styles.anime_img_large]: type === "large",
+                  })}
+                  src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
+                  alt=""
+                />
+                <h3 id="title">{anime.attributes.canonicalTitle}</h3>
+                <p>Episodes {anime.attributes.episodeCount}</p>
+              </>
+            )}
           </Link>
         </div>
       </div>
@@ -91,9 +97,7 @@ export function AnimeComponent({ id, type }) {
     </div>
   );
   const handleRender = () => {
-    if (loading) {
-      <Spinner />;
-    } else if (type === "medium" || type === "small" || type === "tiny") {
+    if (type === "medium" || type === "small" || type === "tiny") {
       return animeMainInfo;
     } else if (type === "large") {
       return animeLarge;
