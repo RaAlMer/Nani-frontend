@@ -13,8 +13,12 @@ export function AuthContextProvider({ children }) {
   const [sentMail, setSentMail] = useState(null);
   const [socket, setSocket] = useState(null);
 
-  useEffect(() => {
+  /* useEffect(() => {
     setSocket(io("http://localhost:5000"));
+  }, []); */
+
+  useEffect(() => {
+    setSocket(io("https://nani-app-iron.herokuapp.com"));
   }, []);
 
   useEffect(() => {
