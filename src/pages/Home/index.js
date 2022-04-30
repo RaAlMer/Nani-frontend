@@ -1,6 +1,6 @@
 import { client } from "client";
 import { AnimeComponent, ListAnime, Spinner } from "components";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, Suspense } from "react";
 import { AuthContext } from "../../context";
 import styles from "./Home.module.scss";
 
@@ -14,8 +14,10 @@ export function Home() {
     const item = await client.get(`/anime/home`);
     const result = item.data;
     setAnime(result);
-    setLoading(false)
+    setLoading(false);
   };
+
+  
 
   useEffect(() => {
     getAnime();
@@ -50,7 +52,7 @@ export function Home() {
               {(screenWidth > 425 || user?.watching.length === 0) && (
                 <div className={styles.trending}>
                   <h1>Trending</h1>
-                  <ListAnime anime={anime} type="small"/>
+                  <ListAnime anime={anime} type="small" />
                 </div>
               )}
             </div>
