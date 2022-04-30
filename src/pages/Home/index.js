@@ -17,8 +17,6 @@ export function Home() {
     setLoading(false);
   };
 
-  
-
   useEffect(() => {
     getAnime();
     getUser();
@@ -52,7 +50,7 @@ export function Home() {
               {(screenWidth > 425 || user?.watching.length === 0) && (
                 <div className={styles.trending}>
                   <h1>Trending</h1>
-                  <ListAnime anime={anime} type="small" />
+                    <ListAnime anime={anime} type="small" />
                 </div>
               )}
             </div>
