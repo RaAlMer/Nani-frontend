@@ -147,7 +147,7 @@ export function AuthContextProvider({ children }) {
 
   const verify = async () => {
     try {
-      const response = await client.get("/auth/verify");
+      const response = await client.post("/auth/verify");
       if (response.status === 200) {
         getUser();
         navigate("/");

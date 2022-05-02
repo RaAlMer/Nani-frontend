@@ -24,7 +24,7 @@ export function AnimeComponent({ id, type }) {
     getAnime();
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 700);
   }, []);
 
   /* const animeTiny = () */
