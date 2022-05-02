@@ -19,15 +19,15 @@ export function ListAnime({ anime, type }) {
     <div className={styles.list}>
       {anime.map((item) => {
         return (
-          <div key={item.id}>
-            {screenWidth > 425 ? (
+          <div key={item.id} className={styles.listItem}>
+            {screenWidth > 375 ? (
               screenWidth > 768 ? (
                 <AnimeComponent id={item.id} type={type} />
               ) : (
                 <AnimeComponent id={item.id} type={type} />
               )
             ) : (
-              <AnimeComponent id={item.id} type="large" />
+              <AnimeComponent id={item.id} type="medium" />
             )}
           </div>
         );

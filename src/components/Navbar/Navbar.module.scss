@@ -117,21 +117,24 @@ nav .hamburger {
   .group_profile {
     width: 100%;
     justify-content: space-between;
+    align-items: center;
   }
   .logo {
     margin-left: 60px;
   }
   .profile {
-    /* width: 5rem; */
     margin: 0;
-    width: 20%;
-    height: 40%;
-    /* padding: 10px; */
+    width: 100%;
+    height: 100%;
+    margin: 5px;
     text-align: center;
     align-self: center;
     img {
-      /* margin-right: 20px; */
-      width: 100%;
+      width: 50px;
+      height: 50px;
+    }
+    button {
+      height: 50%;
     }
   }
   .counter {

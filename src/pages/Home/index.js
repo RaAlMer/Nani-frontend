@@ -29,10 +29,6 @@ export function Home() {
     };
   }, []);
 
-  const watchingList = user?.watching.map((item) => {
-    return <AnimeComponent key={item.id} id={item.id} type="medium" />;
-  });
-
   return (
     <div>
       <div>
@@ -44,13 +40,13 @@ export function Home() {
               {user?.watching.length > 0 && (
                 <div className={styles.listContainer}>
                   <h1>Watching</h1>
-                  <div className={styles.list}>{watchingList}</div>
+                  <div className={styles.list}><ListAnime anime={user?.watching} type="medium" /></div>
                 </div>
               )}
-              {(screenWidth > 425 || user?.watching.length === 0) && (
+              {(screenWidth > 375 || user?.watching.length === 0) && (
                 <div className={styles.trending}>
                   <h1>Trending</h1>
-                    <ListAnime anime={anime} type="small" />
+                    <div className={styles.list}><ListAnime anime={anime} type="tiny" /></div>
                 </div>
               )}
             </div>
