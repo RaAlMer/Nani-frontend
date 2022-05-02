@@ -1,15 +1,10 @@
 .app {
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .content {
   flex: 1;
   padding: 40px;
   gap: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .content {
-    flex-direction: row;
-  }
+  min-height: 100vh;
 }
