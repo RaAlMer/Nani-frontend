@@ -43,7 +43,7 @@ export function Home() {
                   <div className={styles.list}><ListAnime anime={user?.watching} type="medium" /></div>
                 </div>
               )}
-              {(screenWidth > 375 || user?.watching.length === 0) && (
+              {(screenWidth > 320 || user?.watching.length === 0) && (
                 <div className={styles.trending}>
                   <h1>Trending</h1>
                     <div className={styles.list}><ListAnime anime={anime} type="tiny" /></div>
