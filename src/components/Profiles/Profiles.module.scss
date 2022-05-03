@@ -1,36 +1,84 @@
-@mixin btn () {
+@mixin btn() {
   background: none;
   border: none;
   padding: 0;
   margin-right: 5px;
-	cursor: pointer;
+  cursor: pointer;
 }
 .profileContainer {
   margin: 10px;
+  min-height: 100vh;
+}
+.tab {
+  background-color: rgb(131, 131, 131);
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  max-width: 284px;
+  padding: 10px;
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  margin: 0 15px 10px 0;
+  cursor: pointer;
+}
+.radio_watched,
+.radio_watching,
+.radio_planToWatch {
+  display: none;
+}
+.radio_watched:checked + .tab,
+.radio_watching:checked + .tab,
+.radio_planToWatch:checked + .tab {
+  color: #ba11ee;
+  border-color: #ba11ee;
 }
 .lists {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: left;
-  list-style: none;
-  li {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  .lists_watched,
+  .lists_watching,
+  .lists_plan {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    transform: rotateY(180deg) scale(0);
+    backface-visibility: hidden;
+    transition: all 0.4s linear;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    position: relative;
     background-color: rgb(131, 131, 131);
     margin: 20px;
-    max-width: 284px;
     padding: 10px;
-    p {
-      text-decoration: none;
-      bottom: 0px;
-      right: 0px;
-      color: white;
-      width: 100%;
-      height: 20px;
-      font-size: 20px;
-    }
+    min-height: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: left;
+    list-style: none;
   }
+}
+.radio_watched:checked
+  + .tab
+  + .radio_watching
+  + .tab
+  + .radio_planToWatch
+  + .tab
+  + .lists
+  .lists_watched {
+  transform: rotate(0);
+}
+.radio_watching:checked
+  + .tab
+  + .radio_planToWatch
+  + .tab
+  + .lists
+  .lists_watching {
+  transform: rotate(0);
+}
+.radio_planToWatch:checked + .tab + .lists .lists_plan {
+  transform: rotate(0);
 }
 .list {
   position: relative;
@@ -43,27 +91,21 @@
     padding: 5px;
     .addWatched {
       @include btn;
-      color: green
+      color: green;
     }
     .addWatching {
       @include btn;
-      color: blue
+      color: blue;
     }
     .addPlanToWatch {
       @include btn;
-      color: orange
+      color: orange;
     }
     .delete {
       @include btn;
       color: red;
     }
   }
-}
-.lists_inside {
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-  list-style: none;
 }
 .editProfile {
   display: flex;

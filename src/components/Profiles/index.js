@@ -266,20 +266,39 @@ export function Profiles({ owner, followFriend }) {
         </Link>
       </div>
       <br />
-      <ul className={styles.lists}>
-        <li>
-          <p>Watched</p>
-        </li>
-        <ul className={styles.lists_inside}>{watchedList}</ul>
-        <li>
-          <p>Watching</p>
-        </li>
-        <ul className={styles.lists_inside}>{watchingList}</ul>
-        <li>
-          <p>Plan To Watch</p>
-        </li>
-        <ul className={styles.lists_inside}>{planToWatchList}</ul>
-      </ul>
+      <input
+        id="tab-1"
+        type="radio"
+        name="tab"
+        className={styles.radio_watched}
+        defaultChecked
+      />
+      <label htmlFor="tab-1" className={styles.tab}>
+        Watched
+      </label>
+      <input
+        id="tab-2"
+        type="radio"
+        name="tab"
+        className={styles.radio_watching}
+      />
+      <label htmlFor="tab-2" className={styles.tab}>
+        Watching
+      </label>
+      <input
+        id="tab-3"
+        type="radio"
+        name="tab"
+        className={styles.radio_planToWatch}
+      />
+      <label htmlFor="tab-3" className={styles.tab}>
+        Plan to watch
+      </label>
+      <div className={styles.lists}>
+        <div className={styles.lists_watched}>{watchedList}</div>
+        <div className={styles.lists_watching}>{watchingList}</div>
+        <div className={styles.lists_plan}>{planToWatchList}</div>
+      </div>
     </div>
   );
 }

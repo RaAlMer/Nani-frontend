@@ -9,7 +9,9 @@ function App() {
       <div className={styles.content}>
         <Outlet />
       </div>
-      <Footer />
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 }
