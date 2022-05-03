@@ -137,7 +137,7 @@ export function Navbar() {
                 {user && (
                   <li className={styles.profile}>
                     <Link to="/profile">
-                      <img src={user.image} alt={user.image} />
+                      <img src={user.image} alt={user.image}/>
                     </Link>
                   </li>
                 )}

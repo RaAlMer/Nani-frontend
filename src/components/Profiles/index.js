@@ -196,7 +196,7 @@ export function Profiles({ owner, followFriend }) {
   });
 
   return (
-    <div>
+    <div className={styles.profileContainer}>
       {edit ? (
         <div>
           <button onClick={handleSave} disabled={!canSave}>

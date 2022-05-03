@@ -55,8 +55,10 @@ export function AnimeComponent({ id, type }) {
                   src={`https://media.kitsu.io/anime/poster_images/${anime.id}/${type}.jpg`}
                   alt=""
                 />
-                <h3 id="title">{anime.attributes.canonicalTitle}</h3>
-                <p>Episodes {anime.attributes.episodeCount}</p>
+                <div className={styles.info}>
+                  <h3 id="title">{anime.attributes.canonicalTitle}</h3>
+                  <p>Episodes {anime.attributes.episodeCount}</p>
+                </div>
               </>
             )}
           </Link>

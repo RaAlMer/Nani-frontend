@@ -44,13 +44,13 @@ $height_large: 300px;
   }
 }
 .anime_tiny {
-  @include anime(20px);
+  @include anime(0, 90px);
 }
 .anime_small {
- @include anime();
+  @include anime();
 }
 .anime_medium {
-  @include anime(20px);
+  @include anime(0 40px 70px 0);
 }
 .anime_large {
   @include anime(20px, $width_large, $height_large);
@@ -74,22 +74,21 @@ $height_large: 300px;
   }
 }
 .anime_img_tiny {
-  @include anime_img(80px)
+  @include anime_img(80px);
 }
 .anime_img_small {
-  @include anime_img(100px)
+  @include anime_img(100px);
 }
-.anime_img_medium{
-  @include anime_img(150px)
+.anime_img_medium {
+  @include anime_img(150px);
 }
 .anime_img_large {
-  width: $width_large
+  width: $width_large;
 }
 .anime_Link img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
-.anime_Link 
-.animeDetails {
+.anime_Link .animeDetails {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -105,20 +104,39 @@ $height_large: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
+    a {
+      display: flex;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .anime {
     width: 100%;
-    height: auto;
   }
-  .anime_Link {
-    width: 100%;
+  .anime_tiny {
+    @include anime(0, 300px, 130px);
   }
-
-  .anime_Link img {
+  .anime_medium {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
     width: 100%;
   }
   .anime h1 {
     font-size: 6em;
+  }
+  .synopsis {
+    h3 {
+      width: 90vw;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    align-items: flex-start;
   }
 }

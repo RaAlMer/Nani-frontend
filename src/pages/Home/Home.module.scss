@@ -4,6 +4,7 @@
   justify-content: flex-start;
   gap: 10px;
   list-style: none;
+  width: 100%;
 }
 .list {
   display: flex;
@@ -21,13 +22,13 @@
 }
 .trending {
   width: 100%;
-  height: auto;
+  height: fit-content;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
   background-color: rgb(70, 70, 70);
   h1 {
-    color: white
+    color: white;
   }
 }
 h3 {
@@ -35,8 +36,8 @@ h3 {
 }
 
 @media (max-width: 1024px) {
-  .list {
-    flex-direction: column;
+  .container {
+    margin: 0 0 30px 0;
   }
   h3 {
     font-size: 12px;
@@ -45,9 +46,24 @@ h3 {
 
 @media (max-width: 425px) {
   .container {
-    flex-direction: column;
+    margin: 10px 0 83px 0;
   }
   h3 {
     font-size: 20px;
+  }
+  .listContainer {
+    h1, h2, h3, p {
+      color: black;
+    }
+  }
+  .trending {
+    width: 100%;
+    height: fit-content;
+    border: none;
+    .list {
+      div {
+        flex-direction: column;
+      }
+    }
   }
 }
