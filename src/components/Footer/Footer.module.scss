@@ -1,32 +1,11 @@
 .footer {
-<<<<<<< HEAD
   background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
   padding: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   p {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: center;
-  }
-  a {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .footer {
-=======
-    background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);;
-    padding: 20px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
->>>>>>> Gonçalo
-    p {
-      font-size: 12px;
-    }
+    font-size: 12px;
   }
 }
 
