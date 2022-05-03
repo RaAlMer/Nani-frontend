@@ -31,7 +31,7 @@ export function AuthContextProvider({ children }) {
 
   const handleNotification = (type, parentAuthorId, url) => {
     socket.emit("sendNotification", {
-      senderId: user._id,
+      senderUsername: user.username,
       receiverId: parentAuthorId,
       type,
       url
