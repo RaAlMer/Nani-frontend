@@ -2,7 +2,6 @@ import styles from "./Navbar.module.scss";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context";
-import { client } from "client";
 import { BsBellFill } from "react-icons/bs";
 import logo from "./nani_logo.png";
 
@@ -12,7 +11,6 @@ export function Navbar() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [notifications, setNotifications] = useState([]);
   const [showNotificationPanel, setShowNotificationPanel] = useState(false);
-  const [senderName, setSenderName] = useState("");
 
   const toggleNav = () => {
     setShowDropdown(!showDropdown);
@@ -24,21 +22,14 @@ export function Navbar() {
     });
   }, [socket]);
 
-  const getSenderName = async (senderId) => {
-    const item = await client.get(`/auth/${senderId}`);
-    setSenderName(item.data);
-  };
 
-  const displayNotifications = ({ senderId, type, url }) => {
-    getSenderName(senderId);
-    if (senderName !== "") {
+  const displayNotifications = ({ notification, url }) => {
       return (
         <Link
           to={url}
           className={styles.notification}
-        >{`${senderName} ${type}`}</Link>
+        >{notification}</Link>
       );
-    }
   };
 
   useEffect(() => {
