@@ -1,4 +1,5 @@
 $size: 60px;
+$color: white;
 
 .img {
   background-image: url("https://thumbs.gfycat.com/AdoredPerfectHousefly-size_restricted.gif");
@@ -11,7 +12,6 @@ $size: 60px;
   bottom: 0px;
   left: 0px;
 }
-
 .text {
   background-image: radial-gradient(
     ellipse closest-corner at 50% 50%,
@@ -26,26 +26,23 @@ $size: 60px;
   right: 0;
   bottom: 0;
   left: 0;
+  h1 {
+    font-size: 2 * $size;
+    padding-top: 230px;
+    background-repeat: no-repeat;
+    background-position: center 120px;
+    color: $color;
+  }
+  p {
+    color: $color;
+    font-size: $size;
+    margin-bottom: 60px;
+  }
 }
-
-.text h1 {
-  font-size: 2 * $size;
-  padding-top: 230px;
-  background-repeat: no-repeat;
-  background-position: center 120px;
-  color: white;
-}
-
-.text p {
-  color: white;
-  font-size: $size;
-  margin-bottom: 60px;
-}
-
 .link {
   font: bold 16px Arial;
   text-decoration: none;
   background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
-  color: white;
+  color: $color;
   padding: 8px 12px;
 }

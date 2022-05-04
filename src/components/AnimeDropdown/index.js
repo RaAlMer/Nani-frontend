@@ -4,7 +4,6 @@ export function AnimeDropdown({
   addWatched,
   addWatching,
   addPlanToWatch,
-  checkList,
 }) {
   return (
     <div className={styles.dropdown}>

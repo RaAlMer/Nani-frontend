@@ -1,50 +1,13 @@
 import { Signup, Login } from "components";
 import styles from "./SignupLogin.module.scss";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "context";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaGithub,
-  FaGoogle,
-} from "react-icons/fa";
+import { FaTwitter, FaInstagram, FaGithub, FaGoogle } from "react-icons/fa";
 import GoogleLogin from "react-google-login";
 import { Alert } from "components";
-/* import FacebookLogin from "react-facebook-login";
-import { client } from "../../client"; */
 
 export function SignupLogin() {
   const { loginGoogle, loginError, signupError } = useContext(AuthContext);
-  /* const [showLoading, setShowLoading] = useState(false); */
-
-  /* const onFacebookResponse = (data) => {
-    console.log(data);
-    setShowLoading(true);
-    const {
-      name,
-      email,
-      picture: {
-        data: { url },
-      },
-      userID,
-    } = data;
-    let newUser = { name, email, image: url, facebookId: userID };
-    client
-      .post(`/auth/facebook/info`, newUser, { withCredentials: true })
-      .then((response) => {
-        console.log(response);
-        setShowLoading(false);
-      });
-  }; */
-
-  /* const handleFacebook = async () => {
-    const response = await client.get("/auth/facebook/callback", {
-      facebookId: user.facebookId,
-    });
-    const response = await client.post("/auth/facebook/callback");
-    console.log(response);
-  } */
 
   const handleGoogleSuccess = async (data) => {
     const { givenName, familyName, email, imageUrl, googleId } =
@@ -91,22 +54,6 @@ export function SignupLogin() {
               (loginError === true) | (signupError === true) ? "60px" : "0",
           }}
         >
-          {/* <li className={`${styles.icon} ${styles.facebook}`}>
-            <span className={styles.tooltip}>Facebook</span>
-            <span>
-              <FacebookLogin
-                appId="1182218065921023"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={onFacebookResponse}
-                render={(renderProps) => (
-                  <span onClick={renderProps.onClick}>
-                    <FaFacebookF />
-                  </span>
-                )}
-              />
-            </span>
-          </li> */}
           <li className={`${styles.icon} ${styles.twitter}`}>
             <span className={styles.tooltip}>Twitter</span>
             <span>

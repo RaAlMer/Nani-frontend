@@ -1,4 +1,3 @@
-$fbColor: #1877f2;
 $twColor: #1da1f2;
 $goColor: #dd4b39;
 $igColor: #e4405f;
@@ -139,17 +138,6 @@ body {
       transition: $transition;
     }
   }
-  /* .facebook {
-    &:hover {
-      @include socialBtn($fbColor, $textColorWhite);
-      .tooltip {
-        @include socialBtn($fbColor, $textColorWhite);
-        &::before {
-          @include socialBtn($fbColor, $textColorWhite);
-        }
-      }
-    }
-  } */
   .twitter {
     &:hover {
       @include socialBtn($twColor, $textColorWhite);

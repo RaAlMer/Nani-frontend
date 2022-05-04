@@ -1,6 +1,6 @@
 import { client } from "client";
-import { AnimeComponent, ListAnime, Spinner } from "components";
-import { useContext, useEffect, useState, Suspense } from "react";
+import { ListAnime, Spinner } from "components";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context";
 import styles from "./Home.module.scss";
 

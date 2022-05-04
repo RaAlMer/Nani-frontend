@@ -1,21 +1,20 @@
+@mixin display($display, $flexDirection, $justifyContent) {
+  display: $display;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+}
 .listContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  @include display(flex, column, flex-start);
   gap: 10px;
   list-style: none;
   width: 100%;
 }
 .list {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  @include display(flex, row, flex-start);
   align-items: center;
 }
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include display(flex, column, space-between);
   align-items: baseline;
   width: 100%;
   gap: 10px;

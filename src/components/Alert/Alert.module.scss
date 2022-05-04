@@ -1,40 +1,34 @@
+@mixin type ($color, $backColor, $borderColor) {
+  color: $color;
+  background-color: $backColor;
+  border-color: $borderColor;
+}
+$dim: 1rem;
 /* The alert message box */
 .alert {
   position: relative;
-  padding: 1rem 1rem;
-  margin-bottom: 1rem;
+  padding: $dim $dim;
+  margin-bottom: $dim;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
 .error {
-  color: #842029;
-  background-color: #f8d7da;
-  border-color: #f5c2c7;
+  @include type(#842029, #f8d7da, #f5c2c7);
 }
 .success {
-  color: #0f5132;
-  background-color: #d1e7dd;
-  border-color: #badbcc;
+  @include type(#0f5132, #d1e7dd, #badbcc);
 }
 .warning {
-  color: #664d03;
-  background-color: #fff3cd;
-  border-color: #ffecb5;
+  @include type(#664d03, #fff3cd, #ffecb5);
 }
 .primary {
-  color: #084298;
-  background-color: #cfe2ff;
-  border-color: #b6d4fe;
+  @include type(#084298, #cfe2ff, #b6d4fe);
 }
 .secondary {
-  color: #41464b;
-  background-color: #e2e3e5;
-  border-color: #d3d6d8;
+  @include type(#41464b, #e2e3e5, #d3d6d8);
 }
 .info {
-  color: #055160;
-  background-color: #cff4fc;
-  border-color: #b6effb;
+  @include type(#055160, #cff4fc, #b6effb);
 }
 /* The close button */
 .closebtn {

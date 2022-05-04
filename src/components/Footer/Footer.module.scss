@@ -1,3 +1,4 @@
+$color: white;
 .footer {
   background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
   padding: 20px;
@@ -8,14 +9,14 @@
   justify-content: center;
   p {
     font-size: 12px;
-    color: white;
+    color: $color;
     text-align: center;
     display: flex;
     gap: 10px;
   }
   a {
     text-decoration: none;
-    color: white;
+    color: $color;
   }
 }
 
