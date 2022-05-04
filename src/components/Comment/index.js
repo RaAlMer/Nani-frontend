@@ -31,7 +31,7 @@ export function Comment({
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
   const [isEdited, setIsEdited] = useState(false);
-  const { user, socket, handleNotification } = useContext(AuthContext);
+  const { user, handleNotification } = useContext(AuthContext);
 
   return (
     <div key={comment.id} className={styles.comment}>

@@ -1,70 +1,273 @@
-# Getting Started with Create React App
+# Nani
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Describe your project in one/two lines.
 
-In the project directory, you can run:
+## User Stories
 
-### `npm start`
+-  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
+-  **Signup:** As an anon I can sign up in the platform so that I can start browsing animes
+-  **Login:** As a user I can login to the platform so that I can see my favorite animes
+-  **Logout:** As a user I can logout from the platform so no one else can use it
+-  **Chenge password:** As a user I can change my password to login to the platform
+-  **Add Animes to your lists** As a user I can add a anime so that other user can check what animes I am watching, I have watched, I have planned to watch
+-  **List Animes** As a user I want to see the animes so that I can choose one to watch
+-  **Search Animes** As a user I want to search animes by name so that I can add them to my lists
+-  **Search Users** As a user I want to search other users by name to follow them and see their lists
+-  **See other users** As a user I want to see other users so that I can see check their lists and follow them
+-  **See my profile** As a user I want to see my profile so that I can check my profile
+-  **Edit my profile** As a user I want to edit my profile so that I can change my name and picture
+-  **Edit my lists** As a user I want to edit my lists so that I can add or remove animes from my lists
+-  **Delete my account** As a user I want to delete my account so that I can delete my account
+-  **Follow users** As a user I want to follow other users so that I can see their lists
+-  **Unfollow users** As a user I want to unfollow other users so that I can stop following them
+-  **See my followers** As a user I want to see my followers so that I can see who follows me
+-  **See my following** As a user I want to see my following so that I can see who I am following
+-  **See my lists** As a user I want to see my lists so that I can see what animes I am watching, I have watched, I have planned to watch
+-  **See my notifications** As a user I want to see my notifications so that I can check what is happening in the platform
+-  **Write comments** As a user I want to write comments in the animes so that I can express my opinions and reply to other users
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Backlog
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+User profile:
+- see my profile and my anime lists
+- edit my profile
+- edit my lists
 
-### `npm test`
+Other user profile:
+- see other users profiles and their anime lists
+- follow other users
+- unfollow other users
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Log-in/Sign-up:
+- login
+- signup
+- forget password
 
-### `npm run build`
+Homepage:
+- see trending animes
+- see animes you are watching
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Friends:
+- search users
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Anime:
+- search animes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Each anime page:
+- see anime details
+- add anime to my lists
+- add comments to anime
+- reply comments to anime
 
-### `npm run eject`
+  
+# Client
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Routes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- / - Homepage
+- /login-signup - Signup/Login form
+- /confirm/:id - Confirm email
+- /reset-pass - Reset password form
+- /password-reset/:id/:token - Reset password using token
+- /profile - profile page
+- /search - search animes
+- /friends - search users
+- /Follow/:id - ?
+- /friendProfile/:friendId - friend profile page
+- /anime/:animeId - anime details page
+- /* - 404 page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Pages
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Home Page (public)
+- Sign-up/Log-in Page (anon only)
+- Confirm Email Page (anon only)
+- Reset Password Page (anon only)
+- Friends Page (user only)
+- Anime Page (user only)
+- Anime Details Page (user only)
+- My Profile Page (user only)
+- Friends Profile Page (user only)
+- 404 Page (public)
 
-## Learn More
+## Components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Alert component
+  - Input: children: any, type: string, message: string
+  - Output: alert: any
+- Anime component
+  - Input: id: number, type: string
+  - Output: anime: any
+- AnimeDropdown component
+  - Input: addWatching: any, addWatched: any, addPlanToWatch: any
+  - Output: animeDropdown: any
+- Comment component
+  - Input: comment: object, replies: object, userId: number, deleteComment: any, updateComment: any, activeComment: any, addComment: any, parentId: number
+  - Output: comment: any
+- CommentForm component
+  - Input: submitLabel: any, handleSubmit: any, initialText: string, hasCancelButton: boolean, handleCancel: any
+  - Output: commentForm: any
+- Footer component
+  - Output: footer: any
+- ListAnime component
+  - Input: anime: any, type: string
+  - Output: listAnime: any
+- ListOfComments component
+  - Input: currentUserId: number, animeId: number
+  - Output: listOfComments: any
+- Login component
+  - Output: login: any
+- Navbar component
+  - Output: navbar: any
+- PrivateRoute component
+  - Input: children: any
+  - Output: privateRoute: any
+- Profiles component
+  - Input: owner: object, followFriend: object
+  - Output: profiles: any
+- SearchBar component
+  - Input: search: string, setSearch: any, setResults: any, searchBarInput: string
+- Signup component
+  - Output: signup: any
+- Spinner component
+  - Output: spinner: any
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## IO
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Services
 
-### Analyzing the Bundle Size
+- Auth Service
+  - auth.login(user)
+  - auth.signup(user)
+  - auth.logout()
+  - auth.me()
+  - auth.getUser() // synchronous
+- Restaurant Service
+  - restaurant.list()
+  - restaurant.create(data)
+  - restaurant.detail(id)
+  - restaurant.addFavorite(id)
+  - restaurant.removeFavorite(id)   
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Server
 
-### Making a Progressive Web App
+## Models
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+User model
 
-### Advanced Configuration
+```
+firstName - string
+lastName - string
+username - String
+email - String // required & unique
+confirmed - Boolean
+password - String
+image - String
+googleId - String
+facebookId - String
+watched - Array
+watching - Array
+planToWatch - Array
+following - [ObjectID<User>]
+followers - [ObjectID<User>]
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Comment model
 
-### Deployment
+```
+author - ObjectID<User> // required
+id - String // required
+animeId - Number // required
+content - String // required
+parentId - String
+createdAt - Date
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Token model
 
-### `npm run build` fails to minify
+```
+userId - ObjectID<User> // required
+token - String // required
+createdAt - Date // expires in 1 hour
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API Endpoints/Backend Routes
+
+- POST /auth/signup
+  - body:
+    - username
+    - email
+    - password
+- POST /auth/login
+  - body:
+    - email
+    - password
+- POST /auth/google/login
+  - body:
+    - email
+    - googleId
+    - image
+- POST /auth/verify
+  - body:
+    - user
+- GET /auth/profile
+- GET /auth/:senderId
+- PUT /auth/profile
+  - body:
+    - userName
+    - image
+- POST /auth/upload
+  - body:
+    - image
+- GET /friend
+- GET /friend/:id
+- GET /friend/search/:searchBarInput
+- GET /friend/:id/:add
+- GET /friend/friendProfile/:id
+- GET /anime/home
+- GET /anime/:id
+- GET /anime/search/:searchBarInput
+- GET /anime/listAnime/page/:pageNumber
+- GET /anime/addList/:id/:listOption
+- GET /anime/deleteList/:id
+- POST /comments/:animeId
+  - body:
+    - content
+    - parentId
+- GET /comments/:animeId
+- DELETE /comments/:commentId
+  - body: (empty)
+- PUT /comments/:commentId
+  - body:
+    - content
+- POST /email
+  - body:
+    - email
+    - url
+- GET /email/confirm/:id
+- POST /email/reset
+  - body:
+    - url
+- POST /email/:id/:token
+  - body:
+    - password
+
+## Links
+
+### Trello/Kanban
+
+[Link to trello board](https://trello.com/b/VlgoqtCW/nani)
+
+### Git
+
+[Client repository Link](https://github.com/RaAlMer/Nani-frontend)
+[Server repository Link](https://github.com/RaAlMer/Nani-backend)
+
+[Deployed APP Link](https://nani-app.netlify.app)
+
+### Slides
+
+[Slides Link](https://docs.google.com/presentation/d/e/2PACX-1vTJgUgXQx1JNE9cHLbbgWkWaegQ4XngX0uQp3hbrBAqQYLOJIkO1gAVohExfEy0a3r0T1wGSjnvyCIh/pub?start=false&loop=false&delayms=3000)
