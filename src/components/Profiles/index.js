@@ -197,78 +197,84 @@ export function Profiles({ owner, followFriend }) {
 
   return (
     <div className={styles.profileContainer}>
-      {edit ? (
-        <div>
-          <button onClick={handleSave} disabled={!canSave}>
-            Save
-          </button>
-          <button onClick={handleCancel}>Cancel</button>
-        </div>
-      ) : (
-        <div>
-          {owner._id === user._id && (
-            <>
-              <button onClick={handleEdit}>
-                <AiFillEdit />
+      <div className={styles.profileDetails}>
+        <div className={styles.profileInfo}>
+          {edit ? (
+            <div className={styles.editProfile}>
+              <button onClick={handleEditImg}>
+                <AiFillFileImage />
+                Upload
               </button>
-              {/* <button onClick={handleDelete}>Delete</button> */}
-            </>
+              <input
+                value={newUsername}
+                onChange={(event) => {
+                  setUsername(event.target.value);
+                  setCanSave(true);
+                }}
+              />
+            </div>
+          ) : (
+            <div className={styles.imageContainer}>
+              <img src={owner.image} alt="profilePic" width="100" />
+              <h1>{owner.username}</h1>
+              {/* If the id from the user is different from the id of the profile, it will show the Follow button */}
+              {owner._id !== user._id && (
+                <button
+                  onClick={() => {
+                    followFriend();
+                    handleNotification(
+                      owner.followers.find((follower) => follower === user._id)
+                        ? "unfollowed you"
+                        : "followed you",
+                      owner._id,
+                      `/friendProfile/${user._id}`
+                    );
+                  }}
+                >
+                  {owner.followers.find((follower) => follower === user._id)
+                    ? "Unfollow"
+                    : "Follow"}
+                </button>
+              )}
+            </div>
+          )}
+          {edit ? (
+            <div className={styles.buttonsEd}>
+              <button onClick={handleSave} disabled={!canSave}>
+                Save
+              </button>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>
+          ) : (
+            <div>
+              {owner._id === user._id && (
+                <>
+                  <button onClick={handleEdit}>
+                    <AiFillEdit />
+                  </button>
+                  {/* <button onClick={handleDelete}>Delete</button> */}
+                </>
+              )}
+            </div>
           )}
         </div>
-      )}
-      {edit ? (
-        <div className={styles.editProfile}>
-          <button onClick={handleEditImg}>
-            <AiFillFileImage />
-            Upload
-          </button>
-          <input
-            value={newUsername}
-            onChange={(event) => {
-              setUsername(event.target.value);
-              setCanSave(true);
-            }}
-          />
+        <div className={styles.followCounters}>
+          <Link to={`/Follow/${owner._id}`}>
+            <h2>Following</h2>
+            <p>{owner.following.length}</p>
+          </Link>
+          <Link to={`/Follow/${owner._id}`}>
+            <h2>Followers</h2>
+            <p>{owner.followers.length}</p>
+          </Link>
         </div>
-      ) : (
-        <div>
-          <img src={owner.image} alt="profilePic" width="100" />
-          <h1>{owner.username}</h1>
-          {/* If the id from the user is different from the id of the profile, it will show the Follow button */}
-          {owner._id !== user._id && (
-            <button
-              onClick={() => {
-                followFriend();
-                handleNotification(
-                  owner.followers.find((follower) => follower === user._id)
-                    ? "unfollowed you"
-                    : "followed you",
-                  owner._id,
-                  `/friendProfile/${user._id}`
-                );
-              }}
-            >
-              {owner.followers.find((follower) => follower === user._id)
-                ? "Unfollow"
-                : "Follow"}
-            </button>
-          )}
-        </div>
-      )}
-      <div className={styles.followCounters}>
-        <Link to={`/Follow/${owner._id}`}>
-          <h2>Following</h2>
-          <p>{owner.following.length}</p>
-        </Link>
-        <Link to={`/Follow/${owner._id}`}>
-          <h2>Followers</h2>
-          <p>{owner.followers.length}</p>
-        </Link>
-      <label className={styles.actionLabel}>
-        <BsCheckLg color="green" /> = "Watched" <FaPlay color="blue" /> =
-        "Watching" <BiTime color="orange" /> = "Plan to watch"{" "}
-        <FaTimes color="red" /> = "Delete"{" "}
-      </label>
+      </div>
+      <div className={styles.profileLists}>
+        <label className={styles.actionLabel}>
+          <BsCheckLg color="green" /> = "Watched" <FaPlay color="blue" /> =
+          "Watching" <BiTime color="orange" /> = "Plan to watch"{" "}
+          <FaTimes color="red" /> = "Delete"{" "}
+        </label>
       </div>
       <br />
       <input

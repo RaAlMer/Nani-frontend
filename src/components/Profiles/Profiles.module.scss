@@ -5,10 +5,37 @@
   margin-right: 5px;
   cursor: pointer;
 }
+$color: white;
 $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 .profileContainer {
   margin: 10px;
   min-height: 100vh;
+  button {
+    background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
+    color: $color;
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+}
+.profileDetails {
+  display: flex;
+  background-color: rgb(240, 248, 255, 0.5);
+  justify-content: space-between;
+  padding: 0 20px;
+  min-height: 126px;
+  margin-bottom: 20px;
+}
+.profileInfo {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+.buttonsEd {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .tab {
   background-color: rgb(131, 131, 131);
@@ -22,8 +49,8 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   margin: 0 15px 10px 0;
   cursor: pointer;
 }
-.actionLabel{
-  font-size: 0.7rem;
+.actionLabel {
+  font-size: 0.9rem;
   margin: 0 15px 10px 0;
   padding: 5px;
   background-color: rgb(240, 248, 255, 0.5);
@@ -115,6 +142,7 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 .editProfile {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   button {
     width: 50%;
   }
@@ -127,4 +155,61 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   align-items: center;
   margin-top: 10px;
   font-style: none;
+  a {
+    text-decoration: none;
+    color: #ba11ee;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profileDetails {
+    .imageContainer {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+    .followCounters {
+      h2, p {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  .actionLabel {
+    font-size: 0.5rem;
+  }
+}
+@media screen and (max-width: 490px) {
+  .tab {
+    height: 20px;
+    font-size: 14px;
+  }
+  .profileDetails {
+    .imageContainer {
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
+    .followCounters {
+      h2, p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 360px) {
+  .tab {
+    font-size: 10px;
+  }
+  .profileDetails {
+    .imageContainer {
+      h1 {
+        font-size: 1rem;
+      }
+    }
+    .followCounters {
+      h2, p {
+        font-size: 0.6rem;
+      }
+    }
+  }
 }
