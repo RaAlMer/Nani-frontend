@@ -1,9 +1,9 @@
 import { client } from "client";
 import styles from "./Search.module.scss";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function SearchBar({ search, setSearch, setResults, searchBarInput }) {
+export function SearchBar({ search, setSearch, setResults, searchBarInput, followBtnToggle }) {
   const [isEmpty, setIsEmpty] = useState(false);
 
   const getSearchResult = async () => {
@@ -21,6 +21,9 @@ export function SearchBar({ search, setSearch, setResults, searchBarInput }) {
       getSearchResult();
     }
   };
+  useEffect(() => {
+    getSearchResult();
+  }, [followBtnToggle]);
 
   return (
     <div>
