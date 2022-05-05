@@ -11,9 +11,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./images/60cb4600ad2427938722b77faba6426a.png");
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media screen and (max-width: 425px) {
+  #root {
+    background-image: none;
+  }
 }

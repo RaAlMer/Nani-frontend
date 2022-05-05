@@ -1,7 +1,22 @@
 .app {
+  display: flex;
   min-height: 100vh;
+  max-width: 1300px;
+  margin: 0 auto;
   position: relative;
 }
+
+.app__container {
+  width: 100vw;
+  height: 1200px;
+}
+
+.bar {
+  max-width: 200px;
+  max-height: 100vh;
+  margin: 10px;
+}
+
 .content {
   flex: 1;
   padding: 40px;
@@ -9,13 +24,19 @@
   min-height: 100vh;
 }
 .footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
+  position: fixed;
 }
 
 @media screen and (max-width: 425px) {
   .content {
     padding: 5px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .bar {
+    display: none;
   }
 }
