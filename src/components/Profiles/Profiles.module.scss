@@ -22,6 +22,12 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   margin: 0 15px 10px 0;
   cursor: pointer;
 }
+.actionLabel{
+  font-size: 0.7rem;
+  margin: 0 15px 10px 0;
+  padding: 5px;
+  background-color: rgb(240, 248, 255, 0.5);
+}
 .radio_watched,
 .radio_watching,
 .radio_planToWatch {
@@ -48,8 +54,6 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     transform: rotateY(180deg) scale(0);
     backface-visibility: hidden;
     transition: all 0.4s linear;
-    box-shadow: $boxShadow;
-    background-color: rgb(131, 131, 131);
     margin: 20px;
     padding: 10px;
     min-height: fit-content;
@@ -88,7 +92,7 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     flex-direction: row;
     justify-content: space-around;
     width: 100px;
-    background-color: rgb(129, 129, 129);
+    /* background-color: rgb(129, 129, 129); */
     padding: 5px;
     .addWatched {
       @include btn;

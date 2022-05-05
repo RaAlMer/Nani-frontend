@@ -244,7 +244,7 @@ export function Profiles({ owner, followFriend }) {
                     ? "unfollowed you"
                     : "followed you",
                   owner._id,
-                  `/profile/${user._id}`
+                  `/friendProfile/${user._id}`
                 );
               }}
             >
@@ -264,6 +264,11 @@ export function Profiles({ owner, followFriend }) {
           <h2>Followers</h2>
           <p>{owner.followers.length}</p>
         </Link>
+      <label className={styles.actionLabel}>
+        <BsCheckLg color="green" /> = "Watched" <FaPlay color="blue" /> =
+        "Watching" <BiTime color="orange" /> = "Plan to watch"{" "}
+        <FaTimes color="red" /> = "Delete"{" "}
+      </label>
       </div>
       <br />
       <input

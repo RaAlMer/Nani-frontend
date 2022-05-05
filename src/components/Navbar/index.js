@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context";
 import { BsBellFill } from "react-icons/bs";
 import logo from "./nani_logo.png";
+import {FiLogOut} from "react-icons/fi";
 
 export function Navbar() {
   const { logout, user, socket } = useContext(AuthContext);
@@ -93,7 +94,7 @@ export function Navbar() {
               )}
               {user && (
                 <li className={styles.profile}>
-                  <button onClick={logout}>Logout</button>
+                  <p onClick={logout}><FiLogOut size={25}/></p>
                 </li>
               )}
             </div>
@@ -134,7 +135,7 @@ export function Navbar() {
                 )}
                 {user && (
                   <li className={styles.profile}>
-                    <button onClick={logout}>Logout</button>
+                    <p onClick={logout}><FiLogOut size={25}/></p>
                   </li>
                 )}
               </div>

@@ -13,9 +13,14 @@ $display: flex;
     .comment_content {
       display: $display;
       .comment_author {
-        margin-right: 8px;
-        font-size: 20px;
-        color: rgb(59, 130, 246);
+        a {
+          text-decoration: none;
+          h2 {
+            margin-right: 8px;
+            font-size: 20px;
+            color: rgb(59, 130, 246);
+          }
+        }
       }
     }
     .comment_text {
