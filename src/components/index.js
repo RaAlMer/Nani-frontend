@@ -11,3 +11,4 @@ export { Comment } from "./Comment";
 export { CommentForm } from "./CommentForm";
 export { ListOfComments } from "./ListOfComments";
 export { Alert } from "./Alert";
+export { ScrollToTop } from "./ScrollToTop";

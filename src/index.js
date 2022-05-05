@@ -19,11 +19,12 @@ import {
   ResetPassToken,
 } from "./pages";
 import { AuthContextProvider } from "./context";
-import { PrivateRoute } from "./components";
+import { PrivateRoute, ScrollToTop } from "./components";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<App />}>
