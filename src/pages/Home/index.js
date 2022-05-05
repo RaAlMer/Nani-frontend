@@ -11,7 +11,7 @@ export function Home() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const getAnime = async () => {
-    const item = await client.get(`/anime/home`);
+    const item = await client.get(`/anime/trending`);
     const result = item.data;
     setAnime(result);
     setLoading(false);
