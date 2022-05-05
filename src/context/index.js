@@ -14,14 +14,14 @@ export function AuthContextProvider({ children }) {
   const [socket, setSocket] = useState(null);
 
   // Code for LOCALHOST
-  /* useEffect(() => {
+  useEffect(() => {
     setSocket(io("http://localhost:5000"));
-  }, []); */
+  }, []);
 
   // Code for NETLIFY and HEROKU
-  useEffect(() => {
+/*   useEffect(() => {
     setSocket(io("https://nani-app-iron.herokuapp.com"));
-  }, []);
+  }, []); */
 
   useEffect(() => {
     if (user) {

@@ -18,11 +18,14 @@ $color: white;
     rgba(0, 0, 0, 0) 1%,
     #000000 100%
   );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
   text-align: center;
   position: absolute;
-  top: 0;
+  top: -60px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -38,11 +41,46 @@ $color: white;
     font-size: $size;
     margin-bottom: 60px;
   }
+  .link {
+    font: bold 16px Arial;
+    text-decoration: none;
+    background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
+    color: $color;
+    margin: 0 auto;
+    width: 20%;
+    padding: 8px 12px;
+  }
 }
-.link {
-  font: bold 16px Arial;
-  text-decoration: none;
-  background: linear-gradient(45deg, rgb(156, 14, 156), midnightblue);
-  color: $color;
-  padding: 8px 12px;
+
+@media screen and (max-width: 900px) {
+  .text {
+    top: -150px;
+    h1 {
+      font-size: $size * 9/10;
+    }
+    p {
+      font-size: $size * 4/5;
+    }
+    .link {
+      font-size: $size / 4;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .img {
+    background-size: auto;
+  }
+  .text {
+    top: -100px;
+    h1 {
+      font-size: $size * 2/3;
+    }
+    p {
+      font-size: $size / 2;
+    }
+    .link {
+      font-size: $size / 6;
+    }
+  }
 }
