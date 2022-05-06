@@ -36,6 +36,10 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  button {
+    &:disabled {
+    opacity: 0.5;
+  }}
 }
 .tab {
   background-color: rgb(131, 131, 131);
@@ -169,7 +173,8 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
       }
     }
     .followCounters {
-      h2, p {
+      h2,
+      p {
         font-size: 1.1rem;
       }
     }
@@ -190,7 +195,8 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
       }
     }
     .followCounters {
-      h2, p {
+      h2,
+      p {
         font-size: 0.8rem;
       }
     }
@@ -207,7 +213,8 @@ $boxShadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
       }
     }
     .followCounters {
-      h2, p {
+      h2,
+      p {
         font-size: 0.6rem;
       }
     }

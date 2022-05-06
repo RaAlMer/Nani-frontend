@@ -86,7 +86,7 @@ export function ListOfComments({ currentUserId, animeId }) {
 
   useEffect(() => {
     getComments();
-  }, []);
+  }, [animeId]);
 
   return (
     <div className={styles.comments}>
