@@ -2,6 +2,7 @@ import style from "./Alert.module.scss";
 import css from "classnames";
 import React, { useState } from "react";
 
+// Component to display an alert
 export function Alert({ children, type, message }) {
   const [isShow, setIsShow] = useState(true);
 

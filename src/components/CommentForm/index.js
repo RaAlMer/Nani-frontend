@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./CommentForm.module.scss";
 
+// Component to generate the body of a comment
 export function CommentForm({
   submitLabel,
   handleSubmit,

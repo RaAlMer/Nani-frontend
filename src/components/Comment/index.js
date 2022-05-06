@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Comment.module.scss";
 
+// Component to display the comments in an anime
 export function Comment({
   comment,
   replies,

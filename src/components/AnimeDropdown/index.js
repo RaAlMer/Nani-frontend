@@ -1,5 +1,6 @@
 import styles from "./AnimeDropdown.module.scss";
 
+// Component to display the different buttons to add an anime to a list
 export function AnimeDropdown({
   addWatched,
   addWatching,

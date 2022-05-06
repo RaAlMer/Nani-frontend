@@ -5,6 +5,7 @@ import { Spinner } from "components";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 
+// Component to display an anime
 export function AnimeComponent({ id, type }) {
   const [anime, setAnime] = useState({
     id: "",
@@ -27,8 +28,7 @@ export function AnimeComponent({ id, type }) {
     }, 700);
   }, [id]);
 
-  /* const animeTiny = () */
-
+  // Main info of the anime
   const animeMainInfo = (
     <>
       <div className={styles.container}>
@@ -66,6 +66,7 @@ export function AnimeComponent({ id, type }) {
       </div>
     </>
   );
+  // Displays the whole information of the anime
   const animeLarge = (
     <div className={styles.main}>
       <h1 id="title">{anime.attributes.canonicalTitle}</h1>
