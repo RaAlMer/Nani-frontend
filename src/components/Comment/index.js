@@ -1,6 +1,7 @@
 import { CommentForm } from "components";
 import { AuthContext } from "context";
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Comment.module.scss";
 
 export function Comment({
@@ -40,7 +41,7 @@ export function Comment({
       </div>
       <div className={styles.comment_right_part}>
         <div className={styles.comment_content}>
-          <div className={styles.comment_author}>{comment.author.username}</div>
+          <div className={styles.comment_author}><Link to={`/friendProfile/${comment.author._id}`}><h2>{comment.author.username}</h2></Link></div>
           <div>{createdAt}</div>
         </div>
         {!isEditing && (
